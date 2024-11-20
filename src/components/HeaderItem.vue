@@ -61,12 +61,21 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
     align-items: center;
     justify-content: space-between;
     padding-right: 38px;
+
+    @media (max-width: 648px) {
+      padding-right: 15px;
+      gap: 15px;
+    }
   }
 
   &__right {
     display: flex;
     align-items: center;
     gap: 26px;
+
+    @media (max-width: 648px) {
+      display: none;
+    }
   }
 }
 

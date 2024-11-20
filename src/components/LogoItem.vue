@@ -32,6 +32,10 @@
   justify-content: center;
   gap: 16px;
 
+  @media (max-width: 398px) {
+    justify-content: end;
+  }
+
   &__icon {
     background-color: vars.$yellow;
     width: 40px;
@@ -40,6 +44,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    flex-shrink: 0;
   }
 
   &__title {
@@ -49,6 +54,11 @@
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 600;
+
+    @media (max-width: 398px) {
+      text-align: right;
+      max-width: max-content;
+    }
 
     span {
       background-color: #455c7d;
