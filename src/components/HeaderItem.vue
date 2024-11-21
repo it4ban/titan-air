@@ -65,6 +65,7 @@ function toggleMenu() {
   left: 0;
   background-color: vars.$blue;
   width: 100%;
+  z-index: 3;
 
   &__wrapper {
     display: flex;

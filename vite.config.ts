@@ -15,6 +15,7 @@ export default defineConfig({
       },
     },
   },
+  base: '/titan-air/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

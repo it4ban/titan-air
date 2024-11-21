@@ -1,13 +1,34 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 defineProps<{
   transparent?: boolean
 }>()
+
+const isActive = ref(false)
+const icon = ref<HTMLElement | null>(null)
+
+function toggleSearchForm() {
+  isActive.value = !isActive.value
+}
 </script>
 
 <template>
   <form action="" class="search-form">
-    <input type="text" class="search-form__input" />
-    <a href="#" :class="[transparent ? 'icon icon--transparent' : 'icon', 'search-form__icon']">
+    <input
+      type="text"
+      :class="['search-form__input', { 'search-form__input--active': isActive }]"
+    />
+    <a
+      href="#"
+      ref="icon"
+      :class="[
+        transparent || isActive ? 'icon icon--transparent' : 'icon',
+        'search-form__icon',
+        { 'search-form__icon--active': isActive },
+      ]"
+      @click.prevent="toggleSearchForm"
+    >
       <svg
         width="16"
         height="16"
@@ -44,8 +65,9 @@ defineProps<{
     color: vars.$darkBlue;
     padding: 0 20px;
     position: absolute;
-    right: 0;
+    right: 1px;
     z-index: 1;
+    transition: all vars.$transition;
 
     &--active {
       width: 300px;
@@ -57,6 +79,12 @@ defineProps<{
     z-index: 2;
     svg path {
       fill: #fff;
+    }
+
+    &--active {
+      svg path {
+        fill: vars.$blue;
+      }
     }
   }
 }

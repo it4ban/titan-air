@@ -16,7 +16,7 @@ function toggleLangMenu() {
   <div class="lang" @click="toggleLangMenu">
     <div :class="[transparent ? 'icon icon--transparent' : 'icon', 'lang__wrapper']">
       <p class="lang__current">En</p>
-      <span class="lang__icon">
+      <span :class="['lang__icon', { 'lang__icon--rotate': isOpened }]">
         <svg width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0L6.00009 9.10372e-05L3.00009 3L0 0Z" fill="white" />
         </svg>
@@ -47,11 +47,18 @@ function toggleLangMenu() {
 
   &__current {
     color: vars.$light;
+    z-index: 2;
   }
 
   &__icon {
     display: flex;
     align-items: center;
+    z-index: 2;
+    transition: all vars.$transition;
+
+    &--rotate {
+      transform: rotate(180deg);
+    }
   }
 }
 
@@ -76,6 +83,7 @@ function toggleLangMenu() {
   &--open {
     height: 142px;
     opacity: 1;
+    z-index: 1;
   }
 
   &__value {

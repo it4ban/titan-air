@@ -60,8 +60,16 @@
   border-radius: 50%;
   transition: vars.$transition;
 
+  svg path {
+    transition: all vars.$transition;
+  }
+
   @include mixins.hover {
     background-color: vars.$dark;
+
+    svg path {
+      fill: vars.$light !important;
+    }
   }
 
   &--transparent {

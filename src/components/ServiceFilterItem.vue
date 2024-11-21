@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import LeftAsideItem from './LeftAsideItem.vue'
 import ButtonItem from './ButtonItem.vue'
+import ModalForm from './ModalForm.vue'
 </script>
 
 <template>
+  <ModalForm />
+
   <div class="services">
     <p class="services__header">choose service:</p>
 
