@@ -11,9 +11,9 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
         <LogoItem />
 
         <div class="footer-top__right-side">
-          <SearchFormItem />
+          <SearchFormItem :transparent="true" />
 
-          <a href="#" class="icon contacts-link">
+          <a href="#" class="icon icon--transparent contacts-link">
             <svg
               width="16"
               height="14"
@@ -32,7 +32,7 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
             </svg>
           </a>
 
-          <LangSwitcherItem />
+          <LangSwitcherItem :transparent="true" />
         </div>
       </div>
     </div>
@@ -186,6 +186,7 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
   background-repeat: no-repeat;
   width: 100%;
 }
+
 .footer-top {
   border-bottom: 1px solid #455c7d;
 

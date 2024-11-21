@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  variant?: 'fill' | 'outline'
+}>()
+</script>
 
 <template>
-  <button class="btn btn--fill">
+  <button :class="['btn', `btn--${variant}`]">
     <slot />
   </button>
 </template>
@@ -40,6 +44,13 @@
   }
 
   &--outline {
+    border: 1px solid vars.$yellow;
+    background-color: transparent;
+
+    @include mixins.hover {
+      border-color: transparent;
+      background-color: vars.$yellow;
+    }
   }
 }
 </style>

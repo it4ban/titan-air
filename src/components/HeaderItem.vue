@@ -3,14 +3,22 @@ import MobileMenu from './MobileMenu.vue'
 import LogoItem from './LogoItem.vue'
 import SearchFormItem from './SearchFormItem.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
+
+import { ref } from 'vue'
+
+const isOpened = ref(false)
+
+function toggleMenu() {
+  isOpened.value = !isOpened.value
+}
 </script>
 
 <template>
-  <MobileMenu />
+  <MobileMenu v-model:isOpened="isOpened" />
 
   <div class="header">
     <div class="header__wrapper">
-      <div class="menu-gamburger">
+      <div class="menu-gamburger" @click="toggleMenu">
         <span class="menu-gamburger__line"></span>
         <span class="menu-gamburger__line"></span>
         <span class="menu-gamburger__line"></span>

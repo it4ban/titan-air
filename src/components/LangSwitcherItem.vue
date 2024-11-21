@@ -1,8 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+defineProps<{
+  transparent?: boolean
+}>()
+
+const isOpened = ref(false)
+
+function toggleLangMenu() {
+  isOpened.value = !isOpened.value
+}
+</script>
 
 <template>
-  <div class="lang">
-    <div class="icon lang__wrapper">
+  <div class="lang" @click="toggleLangMenu">
+    <div :class="[transparent ? 'icon icon--transparent' : 'icon', 'lang__wrapper']">
       <p class="lang__current">En</p>
       <span class="lang__icon">
         <svg width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +23,7 @@
       </span>
     </div>
 
-    <div class="lang-variants">
+    <div :class="['lang-variants', { 'lang-variants--open': isOpened }]">
       <span class="icon lang-variants__value">Ru</span>
       <span class="icon lang-variants__value">No</span>
     </div>
@@ -56,6 +68,7 @@
   width: 50px;
   height: 0;
   opacity: 0;
+  overflow: hidden;
   transition: all vars.$transition;
   padding: 5px;
   background-color: vars.$darkBlue;

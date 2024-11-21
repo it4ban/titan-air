@@ -1,9 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  transparent?: boolean
+}>()
+</script>
 
 <template>
   <form action="" class="search-form">
     <input type="text" class="search-form__input" />
-    <a href="#" class="icon search-form__icon">
+    <a href="#" :class="[transparent ? 'icon icon--transparent' : 'icon', 'search-form__icon']">
       <svg
         width="16"
         height="16"

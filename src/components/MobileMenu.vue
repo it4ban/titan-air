@@ -1,9 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+  isOpened: boolean
+}>()
+
+const emit = defineEmits<{
+  (event: 'update:isOpened', value: boolean): void
+}>()
+
+function closeMenu() {
+  emit('update:isOpened', false)
+}
+</script>
 
 <template>
-  <div class="mobile-menu">
+  <div :class="['mobile-menu', { 'mobile-menu--open': props.isOpened }]">
     <div class="mobile-menu__wrapper">
-      <div class="mobile-menu__left-side">
+      <div class="mobile-menu__left-side" @click="closeMenu">
         <button class="close-mobile">
           <svg
             width="31"
@@ -121,9 +133,21 @@
   left: 0;
   background: linear-gradient(255deg, #1c2b3f 0%, #2d4262 100%);
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 510px;
+  width: 0;
+  opacity: 0;
   height: 100vh;
-  z-index: 10;
+  z-index: -10;
+  transition: all vars.$transition;
+
+  &--open {
+    opacity: 1;
+    width: 510px;
+    z-index: 10;
+
+    @media (max-width: 510px) {
+      width: 100%;
+    }
+  }
 
   &__wrapper {
     display: flex;
@@ -131,13 +155,24 @@
   }
 
   &__left-side {
+    cursor: pointer;
     background-color: vars.$darkBlue;
     width: 100px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-top: 30px;
+    flex-shrink: 0;
+
+    @media (max-width: 510px) {
+      width: 70px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
 
     @include mixins.hover {
       svg {
@@ -150,7 +185,12 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: space-around;
+
+    @media (max-width: 510px) {
+      padding-right: 10px;
+      align-items: end;
+    }
   }
 }
 
@@ -172,17 +212,43 @@
     height: 80px;
     display: flex;
     align-items: center;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    @media (max-width: 510px) {
+      justify-content: end;
+    }
+
+    @include mixins.hover {
+      background-color: rgba(29, 45, 66, 0.5);
+    }
   }
 
   &__link {
     font-size: 24px;
     font-weight: 900;
+
+    @media (max-width: 510px) {
+      font-size: 18px;
+      text-align: right;
+    }
   }
 
   &__social-icons {
     display: flex;
     align-items: center;
     gap: 25px;
+    padding-right: 45px;
+
+    @media (max-width: 510px) {
+      margin-left: auto;
+      padding-right: 0;
+    }
+
+    @media (max-width: 368px) {
+      gap: 12px;
+    }
   }
 }
 

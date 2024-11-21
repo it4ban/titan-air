@@ -40,8 +40,8 @@ import ButtonItem from './ButtonItem.vue'
           </p>
         </div>
         <div class="content__buttons">
-          <ButtonItem>REQUEST SERVICES</ButtonItem>
-          <ButtonItem>REQUEST A PRICE QUOTE</ButtonItem>
+          <ButtonItem :variant="'fill'">REQUEST SERVICES</ButtonItem>
+          <ButtonItem :variant="'outline'">REQUEST A PRICE QUOTE</ButtonItem>
         </div>
       </div>
     </div>

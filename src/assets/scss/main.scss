@@ -63,6 +63,14 @@
   @include mixins.hover {
     background-color: vars.$dark;
   }
+
+  &--transparent {
+    background-color: transparent;
+
+    @include mixins.hover {
+      background-color: vars.$dark;
+    }
+  }
 }
 
 .social-icon {
