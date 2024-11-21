@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ButtonItem from './ButtonItem.vue'
+</script>
 
 <template>
   <dialog class="dialog-modal">
@@ -21,8 +23,117 @@
         </svg>
       </button>
     </div>
+
     <div class="dialog-modal__content">
-      <form action=""></form>
+      <form action="#" class="modal-form">
+        <div class="modal-form__top">
+          <div class="modal-field">
+            <span class="field-header">Company name:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+          <div class="modal-field">
+            <span class="field-header">E-mail:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+          <div class="modal-field">
+            <span class="field-header">Aircraft type:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+          <div class="modal-field">
+            <span class="field-header">Aircraft reg:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+          <div class="modal-field">
+            <span class="field-header">Purpose of flight:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+          <div class="modal-field">
+            <span class="field-header">Locations and schedule:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+
+          <div class="modal-checks">
+            <span class="field-header">Services required:</span>
+
+            <div class="modal-checks__list-wrapper">
+              <ul class="check-list">
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Landing & o/f permits</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Ground handling</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Catering</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Hotac</p>
+                </li>
+              </ul>
+
+              <ul class="check-list">
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Airport service</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">VIP/Business lounge</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Fuel</p>
+                </li>
+                <li class="check-list__item">
+                  <div class="check-list__checkbox">
+                    <input type="checkbox" name="" id="" />
+                    <div class="check-list__icon"></div>
+                  </div>
+                  <p class="check-list__item-title">Other</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="modal-field">
+            <span class="field-header">Remarks:</span>
+            <input type="text" class="modal-field__input" />
+          </div>
+        </div>
+
+        <div class="modal-form__bottom">
+          <div class="add-file">
+            <ButtonItem variant="fill"> Add file </ButtonItem>
+          </div>
+
+          <ButtonItem variant="fill">Send</ButtonItem>
+        </div>
+      </form>
     </div>
   </dialog>
 </template>
