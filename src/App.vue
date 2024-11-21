@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HeaderItem from './components/HeaderItem.vue'
-import BreadcrumbsItem from './components/BreadcrumbsItem.vue'
+import BreadCrumbsItem from './components/BreadCrumbsItem.vue'
 import ServiceFilterItem from './components/ServiceFilterItem.vue'
 import FooterItem from './components/FooterItem.vue'
 </script>
@@ -12,7 +12,7 @@ import FooterItem from './components/FooterItem.vue'
     <div class="all__wrapper">
       <section class="banner">
         <div class="container">
-          <BreadcrumbsItem />
+          <BreadCrumbsItem />
 
           <div class="banner__img">
             <img
@@ -57,6 +57,10 @@ import FooterItem from './components/FooterItem.vue'
 .all {
   &__wrapper {
     padding: 100px 0 57px;
+
+    @media (max-width: 420px) {
+      padding-bottom: 35px;
+    }
   }
 }
 .banner {
@@ -66,18 +70,44 @@ import FooterItem from './components/FooterItem.vue'
   width: 100%;
   height: 300px;
 
+  @media (max-width: 420px) {
+    height: 250px;
+  }
+
   &__img {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 576px) {
+      padding-top: 20px;
+    }
+
+    @media (max-width: 378px) {
+      padding-top: 50px;
+    }
   }
 }
 
 .page-description {
   padding: 36px 0 24px;
+
+  @media (max-width: 520px) {
+    padding: 20px 0;
+  }
+
   &__text {
     padding: 26px 0 31px;
     line-height: 25px;
+
+    @media (max-width: 520px) {
+      font-size: 14px;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 12px;
+    }
   }
 }
 </style>

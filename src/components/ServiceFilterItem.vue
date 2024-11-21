@@ -57,6 +57,11 @@ import ButtonItem from './ButtonItem.vue'
     grid-template-columns: repeat(12, 1fr);
     column-gap: 30px;
     padding-top: 22px;
+
+    @media (max-width: 548px) {
+      column-gap: 0;
+      row-gap: 30px;
+    }
   }
 
   &__header {
@@ -73,18 +78,42 @@ import ButtonItem from './ButtonItem.vue'
   flex-direction: column;
   gap: 19px;
 
+  @media (max-width: 548px) {
+    grid-column: 12 span;
+    gap: 25px;
+  }
+
   &__header {
     font-weight: 700;
   }
 
   &__text {
     line-height: 156%;
+
+    @media (max-width: 720px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 656px) {
+      font-size: 12px;
+    }
   }
 
   &__buttons {
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @media (max-width: 420px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    button {
+      @media (max-width: 720px) {
+        font-size: 12px;
+      }
+    }
   }
 }
 </style>

@@ -183,6 +183,11 @@
 
 .left-aside {
   grid-column: 4 span;
+  min-width: 210px;
+
+  @media (max-width: 548px) {
+    grid-column: 12 span;
+  }
 }
 
 .left-menu {
@@ -226,6 +231,10 @@
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
+
+    @media (max-width: 656px) {
+      font-size: 14px;
+    }
   }
 }
 </style>

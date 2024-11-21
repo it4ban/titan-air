@@ -22,6 +22,10 @@
   text-transform: uppercase;
   color: vars.$blue;
 
+  @media (max-width: 348px) {
+    font-size: 22px;
+  }
+
   span {
     color: vars.$yellow;
   }

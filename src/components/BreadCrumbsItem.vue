@@ -21,6 +21,11 @@
   gap: 7px;
   padding-top: 26px;
 
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: start;
+  }
+
   &__item {
     display: flex;
     align-items: center;
@@ -35,6 +40,10 @@
       width: 1.2px;
       height: 13px;
       background-color: #455c7d;
+
+      @media (max-width: 480px) {
+        display: none;
+      }
     }
 
     &:last-child {

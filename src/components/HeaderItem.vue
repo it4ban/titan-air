@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import MobileMenu from './MobileMenu.vue'
 import LogoItem from './LogoItem.vue'
 import SearchFormItem from './SearchFormItem.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
 </script>
 
 <template>
+  <MobileMenu />
+
   <div class="header">
     <div class="header__wrapper">
       <div class="menu-gamburger">
@@ -56,7 +59,6 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
   width: 100%;
 
   &__wrapper {
-    max-width: 1478px;
     display: flex;
     align-items: center;
     justify-content: space-between;

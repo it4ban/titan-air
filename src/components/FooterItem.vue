@@ -194,6 +194,11 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
     align-items: center;
     justify-content: space-between;
     padding: 20px 35px 15px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 15px;
+    }
   }
 
   &__right-side {
@@ -209,6 +214,19 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
     grid-template-columns: repeat(12, 1fr);
     column-gap: 30px;
     padding: 35px 0 33px;
+
+    @media (max-width: 920px) {
+      column-gap: 15px;
+    }
+
+    @media (max-width: 868px) {
+      column-gap: 30px;
+      row-gap: 30px;
+    }
+
+    @media (max-width: 520px) {
+      column-gap: 0;
+    }
   }
 
   &__contrast-header {
@@ -223,8 +241,31 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
   flex-direction: column;
   gap: 40px;
 
+  @media (max-width: 868px) {
+    grid-row: 2;
+    grid-column: 4 span;
+    align-items: center;
+    gap: 25px;
+  }
+
+  @media (max-width: 520px) {
+    grid-column: 12 span;
+    grid-row: auto;
+    align-items: start;
+  }
+
   &:first-child {
     grid-column: 3 span;
+
+    @media (max-width: 868px) {
+      grid-column: 6 span;
+      grid-row: 1;
+      align-items: start;
+    }
+
+    @media (max-width: 520px) {
+      grid-column: 12 span;
+    }
   }
 
   &__list {
@@ -251,16 +292,49 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
 .footer-socials {
   grid-column: 3 span;
 
+  @media (max-width: 868px) {
+    grid-column: 6 span;
+  }
+
+  @media (max-width: 520px) {
+    grid-column: 12 span;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;
     gap: 21px;
+
+    @media (max-width: 868px) {
+      align-items: end;
+    }
+
+    @media (max-width: 520px) {
+      align-items: start;
+    }
   }
 
   &__icons {
     display: flex;
     align-items: center;
     gap: 21px;
+  }
+}
+
+.social-icon {
+  @media (max-width: 1140px) {
+    height: 40px;
+    width: 40px;
+  }
+
+  @media (max-width: 998px) {
+    height: 35px;
+    width: 35px;
+  }
+
+  @media (max-width: 868px) {
+    width: 50px;
+    height: 50px;
   }
 }
 
