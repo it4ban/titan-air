@@ -1,11 +1,33 @@
 <script setup lang="ts">
+import { ref, onMounted, type ComponentPublicInstance } from 'vue'
+
 import LeftAsideItem from './LeftAsideItem.vue'
 import ButtonItem from './ButtonItem.vue'
 import ModalForm from './ModalForm.vue'
+
+const groundRequestForm = ref<ComponentPublicInstance | null>(null)
+const airRequestForm = ref<ComponentPublicInstance | null>(null)
+const activeElement = ref<string | null>(null)
+
+const GROUDED_REQUEST_FORM_ID = 'ground-request-form'
+const AIR_REQUEST_FORM_ID = 'air-request-form'
+
+const formData = [{ title: 'Ground handling request form' }, { title: 'Air carriage request form' }]
+
+onMounted(() => {
+  console.log(groundRequestForm.value?.$el)
+  console.log(airRequestForm.value)
+})
+
+const openModal = (id: string) => {
+  activeElement.value = id
+}
 </script>
 
 <template>
-  <ModalForm />
+  <ModalForm ref="groundRequestForm" title="Ground handling request form" />
+  <ModalForm ref="airRequestForm" title="Air carriage request form" />
+  <!-- <ModalForm v-for="data in formData" :key="data.title" :title="data.title" :isActive="activeElement.value" /> -->
 
   <div class="services">
     <p class="services__header">choose service:</p>
@@ -42,9 +64,14 @@ import ModalForm from './ModalForm.vue'
             mollit anim id est laborum.
           </p>
         </div>
+
         <div class="content__buttons">
-          <ButtonItem :variant="'fill'">REQUEST SERVICES</ButtonItem>
-          <ButtonItem :variant="'outline'">REQUEST A PRICE QUOTE</ButtonItem>
+          <ButtonItem :variant="'fill-contrast'" :onClick="() => openModal('das')"
+            >REQUEST SERVICES</ButtonItem
+          >
+          <ButtonItem :variant="'outline'" :onClick="() => openModal('da')"
+            >REQUEST A PRICE QUOTE</ButtonItem
+          >
         </div>
       </div>
     </div>

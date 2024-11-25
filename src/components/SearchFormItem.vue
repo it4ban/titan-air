@@ -6,7 +6,6 @@ defineProps<{
 }>()
 
 const isActive = ref(false)
-const icon = ref<HTMLElement | null>(null)
 
 function toggleSearchForm() {
   isActive.value = !isActive.value

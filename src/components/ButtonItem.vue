@@ -1,11 +1,12 @@
 <script setup lang="ts">
 defineProps<{
-  variant?: 'fill' | 'outline'
+  variant?: 'fill-contrast' | 'fill-dark' | 'outline'
+  onClick?: (e: Event) => void
 }>()
 </script>
 
 <template>
-  <button :class="['btn', `btn--${variant}`]">
+  <button :class="['btn', `btn--${variant}`]" @click="onClick">
     <slot />
   </button>
 </template>
@@ -28,18 +29,30 @@ defineProps<{
   border-radius: 8px;
   padding: 0 2px;
 
-  &--fill,
+  &--fill-contrast,
+  &--fill-dark,
   &--outline {
     transition: all vars.$transition;
   }
 
-  &--fill {
+  &--fill-contrast {
     background-color: vars.$yellow;
     border: 1px solid transparent;
 
     @include mixins.hover {
       border: 1px solid vars.$yellow;
       background-color: transparent;
+    }
+  }
+
+  &--fill-dark {
+    background-color: vars.$blue;
+    color: vars.$light;
+
+    @include mixins.hover {
+      background-color: transparent;
+      border: 1px solid vars.$blue;
+      color: vars.$blue;
     }
   }
 

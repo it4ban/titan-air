@@ -116,6 +116,49 @@
   }
 }
 
+.modal-field,
+.modal-area {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    padding: 0 50px;
+  }
+
+  &__input {
+    grid-column: 7 span;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    padding: 0 22px;
+    font-weight: 400;
+    color: vars.$blue;
+
+    transition: border 0.2s ease-in-out;
+
+    &:active,
+    &:focus {
+      border: 1px solid vars.$darkBlue;
+    }
+  }
+}
+
+.modal-field {
+  &__input {
+    height: 45px;
+  }
+}
+
+.modal-area {
+  .field-header {
+    align-self: auto !important;
+  }
+
+  &__input {
+    padding: 10px 22px 15px;
+    outline: none;
+    resize: none;
+  }
+}
+
 a {
   text-decoration: none;
   color: vars.$blue;
