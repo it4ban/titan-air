@@ -1,3 +1,11 @@
-import type { ComponentPublicInstance } from 'vue'
+import { reactive } from 'vue'
 
-export const useOpenModal = (component: ComponentPublicInstance, unicueId: string) => {}
+const popupRegistry = reactive(new Map())
+
+export const useOpenModal = () => {
+  return {
+    register(id, instance) {
+      popupRegistry.set(id, instance)
+    },
+  }
+}

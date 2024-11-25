@@ -1,16 +1,29 @@
-<script setup lang="ts">
+<script lang="ts">
 import ButtonItem from './ButtonItem.vue'
 import ModalFieldItem from './ModalFieldItem.vue'
 import FieldHeaderItem from './FieldHeaderItem.vue'
 import CheckItem from './CheckItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import AddFile from './AddFile.vue'
+import { defineComponent } from 'vue'
 
-const props = defineProps<{
-  // id: string
-  title: string
-  // isActive: boolean
-}>()
+export default defineComponent({
+  name: 'ModalForm',
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props) {
+    const isOpen = ref(false)
+    const popupManager = use
+  },
+})
 </script>
 
 <template>
