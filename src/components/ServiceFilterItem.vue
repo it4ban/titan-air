@@ -1,31 +1,23 @@
 <script setup lang="ts">
-import { ref, onMounted, type ComponentPublicInstance } from 'vue'
+import { ref, type ComponentPublicInstance } from 'vue'
 
 import LeftAsideItem from './LeftAsideItem.vue'
 import ButtonItem from './ButtonItem.vue'
-import ModalForm from './ModalForm.vue'
+import GroundModalForm from './GroundModalForm.vue'
 
-import { useOpenModal } from '../hooks/useOpenModal'
+const GROUND_MODAL_FORM_ID = ref('GROUND_FORM_ID')
+// const AIR_MODAL_FORM_ID = ref('AIR_FORM_ID')
 
-const groundRequestForm = ref<ComponentPublicInstance | null>(null)
-const airRequestForm = ref<ComponentPublicInstance | null>(null)
+const groundModalForm = ref<ComponentPublicInstance | null>(null)
+const isOpen = ref(false)
 
-const GROUDED_REQUEST_FORM_ID = 'ground-request-form'
-// const AIR_REQUEST_FORM_ID = 'air-request-form'
-
-// const formData = [{ title: 'Ground handling request form' }, { title: 'Air carriage request form' }]
-
-onMounted(() => {
-  const groundRequestModal = useOpenModal(groundRequestForm.value, GROUDED_REQUEST_FORM_ID)
-
-  console.log(groundRequestModal)
-})
+const handleOpenModal = () => {
+  isOpen.value = !isOpen.value
+}
 </script>
 
 <template>
-  <ModalForm ref="groundRequestForm" title="Ground handling request form" />
-  <ModalForm ref="airRequestForm" title="Air carriage request form" />
-  <!-- <ModalForm v-for="data in formData" :key="data.title" :title="data.title" :isActive="activeElement.value" /> -->
+  <GroundModalForm ref="groundModalForm" :id="GROUND_MODAL_FORM_ID" v-model:isOpen="isOpen" />
 
   <div class="services">
     <p class="services__header">choose service:</p>
@@ -64,8 +56,10 @@ onMounted(() => {
         </div>
 
         <div class="content__buttons">
-          <ButtonItem :variant="'fill-contrast'">REQUEST SERVICES</ButtonItem>
-          <ButtonItem :variant="'outline'"> >REQUEST A PRICE QUOTE</ButtonItem>
+          <ButtonItem :variant="'fill-contrast'" :onClick="() => handleOpenModal()"
+            >REQUEST SERVICES</ButtonItem
+          >
+          <ButtonItem :variant="'outline'"> REQUEST A PRICE QUOTE</ButtonItem>
         </div>
       </div>
     </div>
