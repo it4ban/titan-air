@@ -5,6 +5,7 @@ import ModalAreaItem from './ModalAreaItem.vue'
 import CheckItem from './CheckItem.vue'
 import ModalChecks from './ModalChecks.vue'
 
+import { groundValidationSchema } from '@/utils'
 import { useModalStore } from '@/stores/modal'
 
 const modalStore = useModalStore()
@@ -13,15 +14,16 @@ const modalStore = useModalStore()
 <template>
   <ModalForm
     :isOpen="modalStore.modalStates.groundModal"
+    :validationSchema="groundValidationSchema"
     @close="modalStore.closeModal('groundModal')"
     title="Ground handling request form"
   >
     <template v-slot:top-content>
-      <ModalFieldItem :header="'Company name:'" />
-      <ModalFieldItem :header="'E-mail:'" />
-      <ModalFieldItem :header="'Aircraft type:'" />
-      <ModalFieldItem :header="'Aircraft reg:'" />
-      <ModalFieldItem :header="'Purpose of flight:'" />
+      <ModalFieldItem :header="'Company name:'" :validationName="'companyName'" />
+      <ModalFieldItem :header="'E-mail:'" :validationName="'email'" />
+      <ModalFieldItem :header="'Aircraft type:'" :validationName="'aircraftType'" />
+      <ModalFieldItem :header="'Aircraft reg:'" :validationName="'aircraftReg'" />
+      <ModalFieldItem :header="'Purpose of flight:'" :validationName="'purpose'" />
       <ModalAreaItem :header="'Locations and schedule:'" :input-style="{ height: '90px' }" />
     </template>
     <template v-slot:main-content>

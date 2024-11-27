@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, onUnmounted } from 'vue'
 
+import { Form } from 'vee-validate'
+import type { Schema } from 'yup'
+
 import ButtonItem from './ButtonItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import AddFile from './AddFile.vue'
@@ -8,6 +11,7 @@ import AddFile from './AddFile.vue'
 const props = defineProps<{
   title: string
   isOpen: boolean
+  validationSchema: Schema
 }>()
 
 const emit = defineEmits(['close'])
@@ -17,7 +21,6 @@ const dialogModal = ref<HTMLElement | null>(null)
 const handleCloseModal = () => {
   emit('close')
 }
-
 const handleKeydown = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && props.isOpen) {
     handleCloseModal()
@@ -35,6 +38,12 @@ watch(
     }
   },
 )
+
+const onSubmitForm = (values: Record<string, string>) => {
+  console.log('Form submitted! ^^')
+  console.log('Form values:', values)
+  handleCloseModal()
+}
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
@@ -70,7 +79,7 @@ onUnmounted(() => {
     </div>
 
     <div class="dialog-modal__content">
-      <form action="#" class="modal-form">
+      <Form @submit="onSubmitForm" class="modal-form" :validation-schema="validationSchema">
         <div class="modal-form__top">
           <slot name="top-content"></slot>
         </div>
@@ -86,7 +95,7 @@ onUnmounted(() => {
             <ButtonItem variant="fill-contrast">Send</ButtonItem>
           </div>
         </div>
-      </form>
+      </Form>
     </div>
   </div>
 </template>
