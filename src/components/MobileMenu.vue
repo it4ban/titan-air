@@ -138,6 +138,7 @@ function closeMenu() {
   height: 100vh;
   z-index: -10;
   transition: all vars.$transition;
+  overflow-x: hidden;
 
   &--open {
     opacity: 1;
