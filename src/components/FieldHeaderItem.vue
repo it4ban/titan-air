@@ -13,7 +13,7 @@ defineProps<{
 
 .field-header {
   grid-column: 3 span;
-  align-self: center;
+  align-self: start;
   font-weight: 700;
   color: vars.$blue;
 

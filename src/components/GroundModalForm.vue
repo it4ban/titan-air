@@ -3,7 +3,7 @@ import ModalForm from './ModalForm.vue'
 import ModalFieldItem from './ModalFieldItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import CheckItem from './CheckItem.vue'
-import FieldHeaderItem from './FieldHeaderItem.vue'
+import ModalChecks from './ModalChecks.vue'
 
 import { useModalStore } from '@/stores/modal'
 
@@ -25,42 +25,20 @@ const modalStore = useModalStore()
       <ModalAreaItem :header="'Locations and schedule:'" :input-style="{ height: '90px' }" />
     </template>
     <template v-slot:main-content>
-      <FieldHeaderItem :header="'Services required:'" />
-
-      <div class="check-boxes">
-        <ul class="check-list">
+      <ModalChecks :title="'Services required:'">
+        <template v-slot:list-left>
           <CheckItem :title="'Landing & o/f permits'" />
           <CheckItem :title="'Ground handling'" />
           <CheckItem :title="'Catering'" />
           <CheckItem :title="'Hotac'" />
-        </ul>
-
-        <ul class="check-list">
+        </template>
+        <template v-slot:list-right>
           <CheckItem :title="'Airport service'" />
           <CheckItem :title="'VIP/Business lounge'" />
           <CheckItem :title="'Fuel'" />
           <CheckItem :title="'Other'" />
-        </ul>
-      </div>
+        </template>
+      </ModalChecks>
     </template>
   </ModalForm>
 </template>
-
-<style scoped lang="scss">
-.check-boxes {
-  grid-column: 7 span;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-
-  @media (max-width: 670px) {
-    grid-column: 12 span;
-  }
-}
-
-.check-list {
-  display: flex;
-  flex-direction: column;
-  gap: 21px;
-}
-</style>

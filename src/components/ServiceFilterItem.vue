@@ -2,6 +2,7 @@
 import LeftAsideItem from './LeftAsideItem.vue'
 import ButtonItem from './ButtonItem.vue'
 import GroundModalForm from './GroundModalForm.vue'
+import AirModalForm from './AirModalForm.vue'
 
 import { useModalStore } from '@/stores/modal'
 
@@ -14,6 +15,7 @@ const handleOpenModal = (formName: 'groundModal' | 'airModal') => {
 
 <template>
   <GroundModalForm />
+  <AirModalForm />
 
   <div class="services">
     <p class="services__header">choose service:</p>
@@ -55,7 +57,9 @@ const handleOpenModal = (formName: 'groundModal' | 'airModal') => {
           <ButtonItem :variant="'fill-contrast'" :onClick="() => handleOpenModal('groundModal')"
             >REQUEST SERVICES</ButtonItem
           >
-          <ButtonItem :variant="'outline'"> REQUEST A PRICE QUOTE</ButtonItem>
+          <ButtonItem :variant="'outline'" :onClick="() => handleOpenModal('airModal')">
+            REQUEST A PRICE QUOTE</ButtonItem
+          >
         </div>
       </div>
     </div>

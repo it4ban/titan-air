@@ -76,11 +76,7 @@ onUnmounted(() => {
         </div>
 
         <div class="modal-form__content">
-          <div class="modal-checks">
-            <div class="modal-checks__wrapper">
-              <slot name="main-content"></slot>
-            </div>
-          </div>
+          <slot name="main-content"></slot>
 
           <ModalAreaItem :header="'Remarks:'" :input-style="{ height: '135px' }" />
 
@@ -216,22 +212,6 @@ onUnmounted(() => {
 
     @media (max-width: 440px) {
       align-items: center;
-    }
-  }
-}
-
-.modal-checks {
-  &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    padding: 34px 50px;
-
-    @media (max-width: 670px) {
-      gap: 15px;
-    }
-
-    @media (max-width: 520px) {
-      padding: 25px 20px;
     }
   }
 }

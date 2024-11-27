@@ -12,8 +12,6 @@ onMounted(() => {
 
     checkButton.value?.classList.toggle('check-item__icon--checked')
     inputField.checked = !inputField.checked
-
-    console.log(inputField.checked)
   })
 })
 </script>
