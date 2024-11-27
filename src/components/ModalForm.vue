@@ -2,33 +2,22 @@
 import ButtonItem from './ButtonItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import AddFile from './AddFile.vue'
-import { computed } from 'vue'
 
-const props = defineProps<{
+defineProps<{
   title: string
-  modelValue: boolean
+  isOpen: boolean
 }>()
 
-const emit = defineEmits<{
-  (e: 'update-state', modelValue: boolean): void
-}>()
-
-const newModalState = computed({
-  get: () => props.modelValue,
-  set: (newModalValue) => {
-    emit('update-state', newModalValue)
-  },
-})
+const emit = defineEmits(['close'])
 
 const handleCloseModal = () => {
-  newModalState.value = false
-  console.log(newModalState.value)
+  emit('close')
 }
 </script>
 
 <template>
-  <div :class="['dialog-backdrop', { 'dialog-backdrop--active': newModalState }]"></div>
-  <div :class="['dialog-modal', { 'dialog-modal--open': newModalState }]">
+  <div :class="['dialog-backdrop', { 'dialog-backdrop--active': isOpen }]"></div>
+  <div :class="['dialog-modal', { 'dialog-modal--open': isOpen }]">
     <div class="dialog-modal__header">
       <span class="dialog-modal__title">{{ title }}</span>
 

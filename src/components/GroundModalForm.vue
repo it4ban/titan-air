@@ -1,31 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import ModalForm from './ModalForm.vue'
 import ModalFieldItem from './ModalFieldItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import CheckItem from './CheckItem.vue'
 import FieldHeaderItem from './FieldHeaderItem.vue'
 
-const props = defineProps<{
-  id: string
-  isOpen: boolean
-}>()
+import { useModalStore } from '@/stores/modal'
 
-const emit = defineEmits<{
-  (e: 'update-state', isOpen: boolean): void
-}>()
-
-const newOpenedState = computed({
-  get: () => props.isOpen,
-  set: (newValue: boolean) => {
-    emit('update-state', newValue)
-  },
-})
+const modalStore = useModalStore()
 </script>
 
 <template>
-  <ModalForm v-model="newOpenedState" title="Ground handling request form">
+  <ModalForm
+    :isOpen="modalStore.modalStates.groundModal"
+    @close="modalStore.closeModal('groundModal')"
+    title="asdasd"
+  >
     <template v-slot:top-content>
       <ModalFieldItem :header="'Company name:'" />
       <ModalFieldItem :header="'E-mail:'" />

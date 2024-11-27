@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { ref, type ComponentPublicInstance } from 'vue'
-
 import LeftAsideItem from './LeftAsideItem.vue'
 import ButtonItem from './ButtonItem.vue'
 import GroundModalForm from './GroundModalForm.vue'
 
-const GROUND_MODAL_FORM_ID = ref('GROUND_FORM_ID')
-// const AIR_MODAL_FORM_ID = ref('AIR_FORM_ID')
+import { useModalStore } from '@/stores/modal'
 
-const groundModalForm = ref<ComponentPublicInstance | null>(null)
-const isOpen = ref(false)
+const modalStore = useModalStore()
 
-const handleOpenModal = () => {
-  isOpen.value = !isOpen.value
+const handleOpenModal = (formName: 'groundModal' | 'airModal') => {
+  modalStore.openModal(formName)
 }
 </script>
 
 <template>
-  <GroundModalForm ref="groundModalForm" :id="GROUND_MODAL_FORM_ID" v-model:isOpen="isOpen" />
+  <GroundModalForm />
 
   <div class="services">
     <p class="services__header">choose service:</p>
@@ -56,7 +52,7 @@ const handleOpenModal = () => {
         </div>
 
         <div class="content__buttons">
-          <ButtonItem :variant="'fill-contrast'" :onClick="() => handleOpenModal()"
+          <ButtonItem :variant="'fill-contrast'" :onClick="() => handleOpenModal('groundModal')"
             >REQUEST SERVICES</ButtonItem
           >
           <ButtonItem :variant="'outline'"> REQUEST A PRICE QUOTE</ButtonItem>
