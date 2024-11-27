@@ -43,6 +43,15 @@ const hadleInputChange = (e: Event) => {
     display: flex;
     align-items: center;
     gap: 31px;
+
+    @media (max-width: 868px) {
+      gap: 15px;
+    }
+
+    @media (max-width: 440px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__input {
@@ -52,5 +61,9 @@ const hadleInputChange = (e: Event) => {
 
 .file-name {
   font-weight: 400px;
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

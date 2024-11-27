@@ -251,7 +251,4 @@ function closeMenu() {
     }
   }
 }
-
-.social-icon {
-}
 </style>

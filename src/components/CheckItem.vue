@@ -50,7 +50,8 @@ onMounted(() => {
   align-items: center;
   gap: 18px;
 
-  &__checkbox {
+  @media (max-width: 398px) {
+    gap: 12px;
   }
 
   &__input {
@@ -79,6 +80,10 @@ onMounted(() => {
   &__title {
     font-weight: 400;
     color: vars.$blue;
+
+    @media (max-width: 398px) {
+      font-size: 14px;
+    }
   }
 }
 </style>

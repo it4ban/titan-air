@@ -122,6 +122,10 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     padding: 0 50px;
+
+    @media (max-width: 798px) {
+      gap: 10px;
+    }
   }
 
   &__input {

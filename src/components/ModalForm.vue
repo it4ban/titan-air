@@ -1,23 +1,53 @@
 <script setup lang="ts">
+import { ref, onMounted, watch, onUnmounted } from 'vue'
+
 import ButtonItem from './ButtonItem.vue'
 import ModalAreaItem from './ModalAreaItem.vue'
 import AddFile from './AddFile.vue'
 
-defineProps<{
+const props = defineProps<{
   title: string
   isOpen: boolean
 }>()
 
 const emit = defineEmits(['close'])
 
+const dialogModal = ref<HTMLElement | null>(null)
+
 const handleCloseModal = () => {
   emit('close')
 }
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && props.isOpen) {
+    handleCloseModal()
+  }
+}
+
+watch(
+  () => props.isOpen,
+  (isOpen) => {
+    if (isOpen) {
+      dialogModal.value?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  },
+)
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
   <div :class="['dialog-backdrop', { 'dialog-backdrop--active': isOpen }]"></div>
-  <div :class="['dialog-modal', { 'dialog-modal--open': isOpen }]">
+  <div ref="dialogModal" :class="['dialog-modal', { 'dialog-modal--open': isOpen }]">
     <div class="dialog-modal__header">
       <span class="dialog-modal__title">{{ title }}</span>
 
@@ -94,8 +124,14 @@ const handleCloseModal = () => {
   transform: translateX(-50%);
   background-color: vars.$light;
   width: 945px;
+  max-width: 100%;
+
   z-index: -2;
   transition: all vars.$transition;
+
+  @media (max-width: 1020px) {
+    max-width: 90%;
+  }
 
   &--open {
     top: 174px;
@@ -118,10 +154,23 @@ const handleCloseModal = () => {
     text-transform: uppercase;
     color: vars.$light;
     padding-left: 41px;
+
+    @media (max-width: 520px) {
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 420px) {
+      font-size: 14px;
+    }
   }
 
   &__content {
     padding: 30px 0;
+
+    @media (max-width: 520px) {
+      padding: 20px 0 15px;
+    }
   }
 }
 
@@ -154,6 +203,20 @@ const handleCloseModal = () => {
     align-items: center;
     justify-content: space-between;
     padding: 37px 50px 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: start;
+      gap: 15px;
+    }
+
+    @media (max-width: 520px) {
+      padding: 25px 20px;
+    }
+
+    @media (max-width: 440px) {
+      align-items: center;
+    }
   }
 }
 
@@ -162,6 +225,14 @@ const handleCloseModal = () => {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     padding: 34px 50px;
+
+    @media (max-width: 670px) {
+      gap: 15px;
+    }
+
+    @media (max-width: 520px) {
+      padding: 25px 20px;
+    }
   }
 }
 </style>

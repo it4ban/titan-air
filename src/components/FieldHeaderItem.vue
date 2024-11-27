@@ -16,5 +16,9 @@ defineProps<{
   align-self: center;
   font-weight: 700;
   color: vars.$blue;
+
+  @media (max-width: 670px) {
+    grid-column: 12 span;
+  }
 }
 </style>

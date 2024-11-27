@@ -14,7 +14,7 @@ const modalStore = useModalStore()
   <ModalForm
     :isOpen="modalStore.modalStates.groundModal"
     @close="modalStore.closeModal('groundModal')"
-    title="asdasd"
+    title="Ground handling request form"
   >
     <template v-slot:top-content>
       <ModalFieldItem :header="'Company name:'" />
@@ -52,6 +52,10 @@ const modalStore = useModalStore()
   display: flex;
   align-items: center;
   gap: 30px;
+
+  @media (max-width: 670px) {
+    grid-column: 12 span;
+  }
 }
 
 .check-list {

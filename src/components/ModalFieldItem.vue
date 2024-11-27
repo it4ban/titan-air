@@ -14,3 +14,19 @@ defineProps<{
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.modal-field {
+  &__wrapper {
+    @media (max-width: 520px) {
+      padding: 0 20px;
+    }
+  }
+
+  &__input {
+    @media (max-width: 670px) {
+      grid-column: 12 span;
+    }
+  }
+}
+</style>
