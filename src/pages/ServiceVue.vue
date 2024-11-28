@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import BreadCrumbsItem from '@/components/BreadCrumbsItem.vue'
 import ServiceFilterItem from '@/components/ServiceFilterItem.vue'
+import BannerItem from '@/components/BannerItem.vue'
+
+import serviceBg from '@/assets/img/support/top-bg.jpg'
+import planeImg from '@/assets/img/support/plane.png'
+import planeImgX2 from '@/assets/img/support/plane@2x.png'
 </script>
 
 <template>
   <main class="all">
     <div class="all__wrapper">
-      <section class="banner">
-        <div class="container">
-          <BreadCrumbsItem />
-
-          <div class="banner__img">
-            <img
-              src="@/assets/img/support/plane.png"
-              srcset="@/assets/img/support/plane@2x.png 2x"
-              loading="lazy"
-              alt="Plane"
-            />
-          </div>
-        </div>
-      </section>
+      <BannerItem
+        :bannerImage="planeImg"
+        :bannerImageX2="planeImgX2"
+        :bannerStyle="{ backgroundImage: `url(${serviceBg})` }"
+      />
 
       <section class="page">
         <div class="container">
@@ -56,31 +51,6 @@ import ServiceFilterItem from '@/components/ServiceFilterItem.vue'
 
     @media (max-width: 420px) {
       padding-bottom: 35px;
-    }
-  }
-}
-.banner {
-  background-image: url('@/assets/img/support/top-bg.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 300px;
-
-  @media (max-width: 420px) {
-    height: 250px;
-  }
-
-  &__img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @media (max-width: 576px) {
-      padding-top: 20px;
-    }
-
-    @media (max-width: 378px) {
-      padding-top: 50px;
     }
   }
 }

@@ -12,6 +12,9 @@
       <li>
         <RouterLink :to="`${BASE_URL}/contacts`">Contacts</RouterLink>
       </li>
+      <li>
+        <RouterLink :to="`${BASE_URL}/about_us`">About US</RouterLink>
+      </li>
     </ul>
   </main>
 </template>
