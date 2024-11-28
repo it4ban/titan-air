@@ -4,7 +4,12 @@
 
 #app {
   margin: 0 auto;
-  padding: 0;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   color: vars.$blue;
@@ -78,41 +83,6 @@
     @include mixins.hover {
       background-color: vars.$dark;
     }
-  }
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-
-  &--yellow,
-  &--blue {
-    transition: all vars.$transition;
-
-    svg path {
-      transition: all vars.$transition;
-    }
-  }
-
-  &--yellow {
-    border: 1px solid vars.$yellow;
-
-    @include mixins.hover {
-      background-color: vars.$yellow;
-
-      svg path {
-        fill: vars.$blue;
-      }
-    }
-  }
-
-  &--blue {
-    border: 1px solid vars.$blue;
   }
 }
 

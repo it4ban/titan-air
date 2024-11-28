@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import HeaderItem from '@/components/HeaderItem.vue'
 import BreadCrumbsItem from '@/components/BreadCrumbsItem.vue'
 import ServiceFilterItem from '@/components/ServiceFilterItem.vue'
-import FooterItem from '@/components/FooterItem.vue'
 </script>
 
 <template>
-  <HeaderItem />
-
   <main class="all">
     <div class="all__wrapper">
       <section class="banner">
@@ -16,8 +12,8 @@ import FooterItem from '@/components/FooterItem.vue'
 
           <div class="banner__img">
             <img
-              src="./assets/img/support/plane.png"
-              srcset="./assets/img/support/plane@2x.png 2x"
+              src="@/assets/img/support/plane.png"
+              srcset="@/assets/img/support/plane@2x.png 2x"
               loading="lazy"
               alt="Plane"
             />
@@ -49,14 +45,14 @@ import FooterItem from '@/components/FooterItem.vue'
       </section>
     </div>
   </main>
-
-  <FooterItem />
 </template>
 
 <style scoped lang="scss">
 .all {
+  width: 100%;
+
   &__wrapper {
-    padding: 100px 0 57px;
+    padding: 0 0 57px;
 
     @media (max-width: 420px) {
       padding-bottom: 35px;
@@ -64,7 +60,7 @@ import FooterItem from '@/components/FooterItem.vue'
   }
 }
 .banner {
-  background-image: url('assets/img/support/top-bg.jpg');
+  background-image: url('@/assets/img/support/top-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

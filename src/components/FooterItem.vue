@@ -2,6 +2,7 @@
 import LogoItem from './LogoItem.vue'
 import SearchFormItem from './SearchFormItem.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
+import SocialIcon from './SocialIcon.vue'
 </script>
 
 <template>
@@ -99,7 +100,7 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
               <span class="contrast-header footer-bottom__contrast-header">SOCIAL NETWORKS:</span>
 
               <div class="footer-socials__icons">
-                <a href="#" class="social-icon social-icon--yellow">
+                <SocialIcon href="/" variant="yellow">
                   <svg
                     width="10"
                     height="17"
@@ -112,8 +113,8 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
                       fill="white"
                     />
                   </svg>
-                </a>
-                <a href="#" class="social-icon social-icon--yellow">
+                </SocialIcon>
+                <SocialIcon href="/" variant="yellow">
                   <svg
                     width="17"
                     height="17"
@@ -134,8 +135,8 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
                       fill="white"
                     />
                   </svg>
-                </a>
-                <a href="#" class="social-icon social-icon--yellow">
+                </SocialIcon>
+                <SocialIcon href="/" variant="yellow">
                   <svg
                     width="17"
                     height="13"
@@ -148,8 +149,8 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
                       fill="white"
                     />
                   </svg>
-                </a>
-                <a href="#" class="social-icon social-icon--yellow">
+                </SocialIcon>
+                <SocialIcon href="/" variant="yellow">
                   <svg
                     width="17"
                     height="15"
@@ -162,7 +163,7 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
                       fill="white"
                     />
                   </svg>
-                </a>
+                </SocialIcon>
               </div>
             </div>
           </div>

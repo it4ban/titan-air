@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SocialIcon from './SocialIcon.vue'
+
 const props = defineProps<{
   isOpened: boolean
 }>()
@@ -53,7 +55,7 @@ function closeMenu() {
         </ul>
 
         <div class="nav-mobile__social-icons">
-          <a href="#" class="social-icon social-icon--yellow">
+          <SocialIcon href="/" variant="yellow">
             <svg
               width="10"
               height="17"
@@ -66,8 +68,8 @@ function closeMenu() {
                 fill="white"
               />
             </svg>
-          </a>
-          <a href="#" class="social-icon social-icon--yellow">
+          </SocialIcon>
+          <SocialIcon href="/" variant="yellow">
             <svg
               width="17"
               height="17"
@@ -88,8 +90,8 @@ function closeMenu() {
                 fill="white"
               />
             </svg>
-          </a>
-          <a href="#" class="social-icon social-icon--yellow">
+          </SocialIcon>
+          <SocialIcon href="/" variant="yellow">
             <svg
               width="17"
               height="13"
@@ -102,8 +104,8 @@ function closeMenu() {
                 fill="white"
               />
             </svg>
-          </a>
-          <a href="#" class="social-icon social-icon--yellow">
+          </SocialIcon>
+          <SocialIcon href="/" variant="yellow">
             <svg
               width="17"
               height="15"
@@ -116,7 +118,7 @@ function closeMenu() {
                 fill="white"
               />
             </svg>
-          </a>
+          </SocialIcon>
         </div>
       </div>
     </div>
