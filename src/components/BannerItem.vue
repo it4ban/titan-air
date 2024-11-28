@@ -6,7 +6,7 @@
       <div v-if="bannerImage" class="banner__img">
         <img
           :src="bannerImage"
-          :srcset="bannerImageX2 ?? bannerImageX2"
+          :srcset="bannerImageX2 ? `${bannerImageX2} 2x` : ''"
           loading="lazy"
           alt="Plane"
         />
@@ -28,7 +28,6 @@ defineProps<{
 
 <style scoped lang="scss">
 .banner {
-  //   background-image: url('@/assets/img/support/top-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -42,6 +41,7 @@ defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
+    object-fit: contain;
 
     @media (max-width: 576px) {
       padding-top: 20px;
