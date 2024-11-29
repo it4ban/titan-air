@@ -1,5 +1,6 @@
 <template>
   <HomeHeader />
+
   <HomeSidebar />
 
   <slot />

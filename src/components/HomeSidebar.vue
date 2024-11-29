@@ -30,6 +30,10 @@ import MenuGamburger from './MenuGamburger.vue'
   width: 88px;
   z-index: 3;
 
+  @media (max-width: 970px) {
+    display: none;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;

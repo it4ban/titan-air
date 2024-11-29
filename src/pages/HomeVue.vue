@@ -86,6 +86,14 @@ import ButtonItem from '@/components/ButtonItem.vue'
     width: 70%;
     height: 100%;
     z-index: 2;
+
+    @media (max-width: 990px) {
+      height: 101%;
+    }
+
+    @include mixins.retina-bg {
+      background-image: url('@/assets/img/home/figure-1@2x.png');
+    }
   }
 
   &__figure-2 {
@@ -99,6 +107,14 @@ import ButtonItem from '@/components/ButtonItem.vue'
     width: 80%;
     height: 100%;
     z-index: 1;
+
+    @media (max-width: 980px) {
+      height: 101%;
+    }
+
+    @include mixins.retina-bg {
+      background-image: url('@/assets/img/home/substract@2x.png');
+    }
   }
 
   &__wrapper {
@@ -114,14 +130,31 @@ import ButtonItem from '@/components/ButtonItem.vue'
     grid-column: 2 / 6;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    min-height: 600px;
+
+    @media (max-width: 1120px) {
+      padding: 0 20px;
+      grid-column: 2 / 8;
+    }
   }
 
   &__text {
     font-size: 18px;
     line-height: 139%;
     padding: 22px 0 57px;
+  }
+}
+
+.screen-title {
+  &__header {
+    @media (max-width: 1120px) {
+      font-size: 24px;
+    }
+  }
+
+  &__underline {
   }
 }
 </style>
