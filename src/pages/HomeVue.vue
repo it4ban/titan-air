@@ -4,16 +4,16 @@
 
     <ul>
       <li>
-        <RouterLink :to="`${BASE_URL}/`">Home</RouterLink>
+        <RouterLink :to="`/`">Home</RouterLink>
       </li>
       <li>
-        <RouterLink :to="`${BASE_URL}/service`">Services</RouterLink>
+        <RouterLink :to="`/service`">Services</RouterLink>
       </li>
       <li>
-        <RouterLink :to="`${BASE_URL}/contacts`">Contacts</RouterLink>
+        <RouterLink :to="`/contacts`">Contacts</RouterLink>
       </li>
       <li>
-        <RouterLink :to="`${BASE_URL}/about_us`">About US</RouterLink>
+        <RouterLink :to="`/about_us`">About US</RouterLink>
       </li>
     </ul>
   </main>
@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { BASE_URL } from '@/constants'
 </script>
 
 <style scoped lang="scss">
