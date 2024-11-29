@@ -45,6 +45,7 @@ import planeImgX2 from '@/assets/img/support/plane@2x.png'
 <style scoped lang="scss">
 .all {
   width: 100%;
+  padding-top: 100px;
 
   &__wrapper {
     padding: 0 0 57px;

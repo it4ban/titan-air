@@ -4,7 +4,6 @@
 
 #app {
   margin: 0 auto;
-  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +33,45 @@
   span {
     color: vars.$yellow;
   }
+}
+
+.screen-title {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &__header {
+    font-weight: 900;
+    font-size: 48px;
+    text-transform: uppercase;
+    color: vars.$light;
+
+    span {
+      color: vars.$yellow;
+    }
+  }
+
+  &__underline {
+    width: 100%;
+    height: 2px;
+    background-color: #455c7d;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 195px;
+      height: 2px;
+      background-color: vars.$light;
+    }
+  }
+}
+
+.screen-text {
+  font-weight: 400;
+  color: vars.$light;
 }
 
 .small-header {
@@ -72,6 +110,10 @@
   @include mixins.hover {
     background-color: vars.$dark;
 
+    .lang__current {
+      color: vars.$light;
+    }
+
     svg path {
       fill: vars.$light !important;
     }
@@ -83,6 +125,18 @@
     @include mixins.hover {
       background-color: vars.$dark;
     }
+  }
+}
+
+.variant-light {
+  path {
+    fill: #fff;
+  }
+}
+
+.variant-dark {
+  path {
+    fill: vars.$blue;
   }
 }
 

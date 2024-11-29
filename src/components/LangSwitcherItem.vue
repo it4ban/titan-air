@@ -1,23 +1,41 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   transparent?: boolean
+  variant?: 'darken' | 'lighten'
 }>()
 
 const isOpened = ref(false)
+const currentLang = ref<HTMLElement | null>(null)
 
 function toggleLangMenu() {
   isOpened.value = !isOpened.value
+
+  if (props.variant === 'darken') {
+    currentLang.value?.classList.toggle('lang__current--darken')
+  }
 }
 </script>
 
 <template>
   <div class="lang" @click="toggleLangMenu">
     <div :class="[transparent ? 'icon icon--transparent' : 'icon', 'lang__wrapper']">
-      <p class="lang__current">En</p>
+      <p
+        ref="currentLang"
+        :class="['lang__current', { 'lang__current--darken': variant === 'darken' }]"
+      >
+        En
+      </p>
       <span :class="['lang__icon', { 'lang__icon--rotate': isOpened }]">
-        <svg width="6" height="3" viewBox="0 0 6 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          :class="['variant-' + (variant === 'darken' ? 'dark' : 'light')]"
+          width="6"
+          height="3"
+          viewBox="0 0 6 3"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path d="M0 0L6.00009 9.10372e-05L3.00009 3L0 0Z" fill="white" />
         </svg>
       </span>
@@ -48,6 +66,12 @@ function toggleLangMenu() {
   &__current {
     color: vars.$light;
     z-index: 2;
+    font-size: 18px;
+    font-weight: bold;
+
+    &--darken {
+      color: vars.$blue;
+    }
   }
 
   &__icon {
@@ -58,6 +82,10 @@ function toggleLangMenu() {
 
     &--rotate {
       transform: rotate(180deg);
+
+      svg path {
+        fill: vars.$light;
+      }
     }
   }
 }
@@ -88,6 +116,8 @@ function toggleLangMenu() {
 
   &__value {
     color: vars.$light;
+    font-size: 18px;
+    font-weight: bold;
     width: 40px;
     height: 40px;
 

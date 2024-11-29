@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  variant?: 'fill-contrast' | 'fill-dark' | 'outline'
+  variant?: 'fill-contrast' | 'fill-dark' | 'outline' | 'outline-yellow'
   onClick?: (e: Event) => void
 }>()
 </script>
@@ -31,7 +31,8 @@ defineProps<{
 
   &--fill-contrast,
   &--fill-dark,
-  &--outline {
+  &--outline,
+  &--outline-yellow {
     transition: all vars.$transition;
   }
 
@@ -63,6 +64,18 @@ defineProps<{
     @include mixins.hover {
       border-color: transparent;
       background-color: vars.$yellow;
+    }
+  }
+
+  &--outline-yellow {
+    border: 1px solid vars.$yellow;
+    background-color: transparent;
+    color: vars.$yellow;
+
+    @include mixins.hover {
+      border-color: transparent;
+      background-color: vars.$yellow;
+      color: vars.$blue;
     }
   }
 }

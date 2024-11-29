@@ -137,7 +137,7 @@ import ButtonItem from '@/components/ButtonItem.vue'
 
 .our-contacts {
   position: absolute;
-  top: 35px;
+  top: 135px;
   left: 150px;
   width: 458px;
   max-width: 100%;

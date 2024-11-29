@@ -1,6 +1,28 @@
 <template>
   <main class="home">
-    <div>HOME PAGE</div>
+    <section class="one-screen">
+      <div class="one-screen__figure-1"></div>
+      <div class="one-screen__figure-2"></div>
+      <div class="container">
+        <div class="one-screen__wrapper">
+          <div class="one-screen__block">
+            <div class="screen-title">
+              <span class="screen-title__header"> <span>best</span> partner for you </span>
+              <div class="screen-title__underline"></div>
+            </div>
+
+            <div class="one-screen__bottom">
+              <p class="screen-text one-screen__text">
+                Titan AirService specializes in aviation and marine support services for executive,
+                government and commercial companys.
+              </p>
+
+              <ButtonItem :variant="'outline-yellow'"> Show more </ButtonItem>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <ul>
       <li>
@@ -21,22 +43,85 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import ButtonItem from '@/components/ButtonItem.vue'
 </script>
 
 <style scoped lang="scss">
+@use '@/assets/scss/vars';
+@use '@/assets/scss/mixins';
+
 .home {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 15px;
-  justify-content: center;
-  height: 100%;
+  width: 100%;
 
   ul {
     display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 20px;
+  }
+}
+
+.one-screen {
+  background-image: url('@/assets/img/home/main-bg-1.jpg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+
+  @include mixins.retina-bg {
+    background-image: url('@/assets/img/home/main-bg-1@2x.jpg');
+  }
+
+  &__figure-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('@/assets/img/home/figure-1.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    width: 70%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &__figure-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('@/assets/img/home/substract.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    width: 80%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 3;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+  }
+
+  &__block {
+    grid-column: 2 / 6;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 139%;
+    padding: 22px 0 57px;
   }
 }
 </style>

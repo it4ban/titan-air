@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 defineProps<{
   transparent?: boolean
+  iconVariant?: 'light' | 'dark'
 }>()
 
 const isActive = ref(false)
@@ -29,6 +30,7 @@ function toggleSearchForm() {
       @click.prevent="toggleSearchForm"
     >
       <svg
+        :class="['variant-' + (iconVariant === 'dark' ? 'dark' : 'light')]"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -76,9 +78,6 @@ function toggleSearchForm() {
 
   &__icon {
     z-index: 2;
-    svg path {
-      fill: #fff;
-    }
 
     &--active {
       svg path {
