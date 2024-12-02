@@ -43,40 +43,29 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, computed } from 'vue'
-import { useMouse } from '@vueuse/core'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import ButtonItem from '@/components/ButtonItem.vue'
 
+import { useAnimationWidth } from '@/hooks'
+
 const figureOne = ref<HTMLElement | null>(null)
 const figureTwo = ref<HTMLElement | null>(null)
 
-const { x } = useMouse()
+const { mouseMove } = useAnimationWidth({
+  elements: [figureOne, figureTwo],
+  fOneWidth: 70,
+  fTwoWidth: 80,
+})
 
-const currentMouseX = ref(computed(() => x.value))
-const prevMouseX = ref(x.value)
+onMounted(() => {
+  window.addEventListener('mousemove', mouseMove)
+})
 
-let figureOneCurrentWidth = 70
-let figureTwoCurrentWidth = 80
-
-const handleMouseMove = () => {
-  if (prevMouseX.value <= currentMouseX.value) {
-    figureOneCurrentWidth = Math.min(figureOneCurrentWidth + 10, 70)
-    figureTwoCurrentWidth = Math.min(figureTwoCurrentWidth + 10, 80)
-    prevMouseX.value = currentMouseX.value
-  } else {
-    figureOneCurrentWidth = Math.max(figureOneCurrentWidth - 10, 65)
-    figureTwoCurrentWidth = Math.max(figureTwoCurrentWidth - 10, 70)
-    prevMouseX.value = currentMouseX.value
-  }
-
-  figureOne.value!.style.width = `${figureOneCurrentWidth}%`
-  figureTwo.value!.style.width = `${figureTwoCurrentWidth}%`
-}
-
-onMounted(() => window.addEventListener('mousemove', handleMouseMove))
-onUnmounted(() => window.removeEventListener('mousemove', handleMouseMove))
+onUnmounted(() => {
+  window.removeEventListener('mousemove', mouseMove)
+})
 </script>
 
 <style scoped lang="scss">
