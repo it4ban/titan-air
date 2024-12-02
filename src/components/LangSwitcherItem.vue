@@ -68,6 +68,7 @@ function toggleLangMenu() {
     z-index: 2;
     font-size: 18px;
     font-weight: bold;
+    transition: all vars.$transition;
 
     &--darken {
       color: vars.$blue;

@@ -4,7 +4,7 @@
       <LogoItem />
 
       <div class="header-home__right">
-        <SearchFormItem :transparent="true" :iconVariant="'dark'" />
+        <SearchFormItem :transparent="true" :iconVariant="currentIndex > 0 ? 'light' : 'dark'" />
 
         <a href="#" class="icon icon--transparent contacts-link">
           <svg
@@ -25,16 +25,29 @@
           </svg>
         </a>
 
-        <LangSwitcherItem :transparent="true" :variant="'darken'" />
+        <LangSwitcherItem :transparent="true" :variant="currentIndex > 0 ? 'lighten' : 'darken'" />
       </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+import { useScreenScroll } from '@/hooks'
 import LangSwitcherItem from './LangSwitcherItem.vue'
 import LogoItem from './LogoItem.vue'
 import SearchFormItem from './SearchFormItem.vue'
+
+const { activeSection } = useScreenScroll()
+const currentIndex = ref(0)
+
+const updateActiveIndex = () => {
+  currentIndex.value = activeSection.value
+}
+
+onMounted(() => window.addEventListener('scroll', updateActiveIndex))
+onUnmounted(() => window.removeEventListener('scroll', updateActiveIndex))
 </script>
 
 <style scoped lang="scss">

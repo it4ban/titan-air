@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const inMove = ref(false)
 const inMoveDelay = ref(400)
@@ -76,6 +76,7 @@ export const useScreenScroll = () => {
   }
 
   return {
+    activeSection,
     handleCalculateSectionOffset,
     handleMouseWheel,
     handleTouchStart,
