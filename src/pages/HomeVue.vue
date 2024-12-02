@@ -25,20 +25,22 @@
       </div>
     </section>
 
-    <ul>
-      <li>
-        <RouterLink :to="`/`">Home</RouterLink>
-      </li>
-      <li>
-        <RouterLink :to="`/service`">Services</RouterLink>
-      </li>
-      <li>
-        <RouterLink :to="`/contacts`">Contacts</RouterLink>
-      </li>
-      <li>
-        <RouterLink :to="`/about_us`">About US</RouterLink>
-      </li>
-    </ul>
+    <section class="two-screen">
+      <ul>
+        <li>
+          <RouterLink :to="`/`">Home</RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="`/service`">Services</RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="`/contacts`">Contacts</RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="`/about_us`">About US</RouterLink>
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
 
@@ -46,9 +48,8 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-import ButtonItem from '@/components/ButtonItem.vue'
-
 import { useAnimationWidth } from '@/hooks'
+import ButtonItem from '@/components/ButtonItem.vue'
 
 const figureOne = ref<HTMLElement | null>(null)
 const figureTwo = ref<HTMLElement | null>(null)
@@ -59,12 +60,95 @@ const { mouseMove } = useAnimationWidth({
   fTwoWidth: 80,
 })
 
+const inMove = ref(false)
+const inMoveDelay = ref(400)
+const activeSection = ref(0)
+const offsets = ref<number[]>([])
+const touchStartY = ref(0)
+
+const handleCalculateSectionOffset = () => {
+  const sections = document.querySelectorAll('section')
+
+  sections.forEach((section) => {
+    const sectionOffset = section.offsetTop
+    offsets.value.push(sectionOffset)
+  })
+}
+
+const handleMouseWheel = (e: WheelEvent) => {
+  if (e.deltaY < 15 && !inMove.value) {
+    moveUp()
+  } else if (e.deltaY > 15 && !inMove.value) {
+    moveDown()
+  }
+}
+
+const handleTouchStart = (e: TouchEvent) => {
+  touchStartY.value = e.touches[0].clientY
+}
+
+const handleTouchMove = (e: TouchEvent) => {
+  if (inMove.value) return false
+
+  const currentY = e.touches[0].clientY
+
+  if (touchStartY.value < currentY) {
+    moveDown()
+  } else {
+    moveUp()
+  }
+
+  touchStartY.value = 0
+  return false
+}
+
+const moveDown = () => {
+  inMove.value = !inMove.value
+  activeSection.value--
+
+  if (activeSection.value < 0) activeSection.value = offsets.value.length - 1
+
+  scrollToSection(activeSection.value, true)
+}
+
+const moveUp = () => {
+  inMove.value = true
+  activeSection.value++
+
+  if (activeSection.value > offsets.value.length - 1) activeSection.value = 0
+
+  scrollToSection(activeSection.value, true)
+}
+
+const scrollToSection = (id: number, force: boolean = false) => {
+  if (inMove.value && !force) return false
+
+  activeSection.value = id
+  inMove.value = true
+
+  const section = document.querySelectorAll('section')[id]
+  section?.scrollIntoView({ behavior: 'smooth' })
+
+  setTimeout(() => {
+    inMove.value = false
+  }, inMoveDelay.value)
+}
+
 onMounted(() => {
   window.addEventListener('mousemove', mouseMove)
+
+  handleCalculateSectionOffset()
+  window.addEventListener('wheel', handleMouseWheel)
+  window.addEventListener('touchstart', handleTouchStart)
+  window.addEventListener('touchmove', handleTouchMove)
 })
 
 onUnmounted(() => {
   window.removeEventListener('mousemove', mouseMove)
+
+  window.removeEventListener('wheel', handleMouseWheel)
+  window.removeEventListener('touchstart', handleTouchStart)
+  window.removeEventListener('touchmove', handleTouchMove)
 })
 </script>
 
@@ -74,6 +158,7 @@ onUnmounted(() => {
 
 .home {
   width: 100%;
+  overflow: hidden;
 
   ul {
     display: flex;
@@ -81,6 +166,11 @@ onUnmounted(() => {
     justify-self: center;
     gap: 20px;
   }
+}
+
+.one-screen,
+.two-screen {
+  height: 100vh;
 }
 
 .one-screen {
