@@ -7,7 +7,7 @@
         <div class="one-screen__wrapper">
           <div class="one-screen__block">
             <div class="screen-title">
-              <span class="screen-title__header"> <span>best</span> partner for you </span>
+              <span class="screen-title__header"><span>best</span> partner for you </span>
               <div class="screen-title__underline"></div>
             </div>
 
@@ -70,9 +70,25 @@ import ButtonItem from '@/components/ButtonItem.vue'
   width: 100%;
   z-index: 1;
   overflow: hidden;
+  position: relative;
 
   @include mixins.retina-bg {
     background-image: url('@/assets/img/home/main-bg-1@2x.jpg');
+  }
+
+  &::before {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38, 53, 75, 0.8);
+
+    @media (max-width: 590px) {
+      display: block;
+    }
   }
 
   &__figure-1 {
@@ -82,17 +98,17 @@ import ButtonItem from '@/components/ButtonItem.vue'
     background-image: url('@/assets/img/home/figure-1.png');
     background-repeat: no-repeat;
     background-position: right;
-    background-size: cover;
+    background-size: 100% 105%;
     width: 70%;
     height: 100%;
     z-index: 2;
 
-    @media (max-width: 990px) {
-      height: 101%;
-    }
-
     @include mixins.retina-bg {
       background-image: url('@/assets/img/home/figure-1@2x.png');
+    }
+
+    @media (max-width: 590px) {
+      display: none;
     }
   }
 
@@ -103,17 +119,17 @@ import ButtonItem from '@/components/ButtonItem.vue'
     background-image: url('@/assets/img/home/substract.png');
     background-repeat: no-repeat;
     background-position: right;
-    background-size: cover;
+    background-size: 100% 105%;
     width: 80%;
     height: 100%;
     z-index: 1;
 
-    @media (max-width: 980px) {
-      height: 101%;
-    }
-
     @include mixins.retina-bg {
       background-image: url('@/assets/img/home/substract@2x.png');
+    }
+
+    @media (max-width: 590px) {
+      display: none;
     }
   }
 
@@ -138,23 +154,33 @@ import ButtonItem from '@/components/ButtonItem.vue'
       padding: 0 20px;
       grid-column: 2 / 8;
     }
+
+    @media (max-width: 590px) {
+      grid-column: 1 / 12;
+    }
   }
 
   &__text {
     font-size: 18px;
     line-height: 139%;
     padding: 22px 0 57px;
+
+    @media (max-width: 590px) {
+      font-size: 16px;
+      padding: 20px 0 24px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 14px;
+    }
   }
 }
 
 .screen-title {
   &__header {
     @media (max-width: 1120px) {
-      font-size: 24px;
+      font-size: 22px;
     }
-  }
-
-  &__underline {
   }
 }
 </style>

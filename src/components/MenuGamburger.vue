@@ -15,19 +15,17 @@ defineProps<{
 
 <style scoped lang="scss">
 @use '@/assets/scss/vars';
+@use '@/assets/scss/mixins';
 
 .menu-gamburger {
   cursor: pointer;
-  //   background-color: vars.$darkBlue;
-  //   width: 100px;
-  //   height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
 
-  &:hover {
+  @include mixins.hover {
     .menu-gamburger__line {
       &:nth-child(odd) {
         &::after {

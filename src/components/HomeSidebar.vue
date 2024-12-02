@@ -1,8 +1,16 @@
 <template>
+  <MobileMenu v-model:isOpened="isOpened" :centeredCloseIcon="true" />
+
   <aside class="sidebar-menu">
     <div class="sidebar-menu__wrapper">
       <div class="sidebar-menu__nav">
-        <MenuGamburger :onClick="() => {}" />
+        <MenuGamburger
+          :onClick="
+            () => {
+              handleMenuOpened()
+            }
+          "
+        />
 
         <span class="sidebar-title sidebar-menu__title">Menu</span>
       </div>
@@ -16,7 +24,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import MenuGamburger from './MenuGamburger.vue'
+import MobileMenu from './MobileMenu.vue'
+
+const isOpened = ref(false)
+
+const handleMenuOpened = () => {
+  isOpened.value = !isOpened.value
+}
 </script>
 
 <style scoped lang="scss">
@@ -36,7 +53,7 @@ import MenuGamburger from './MenuGamburger.vue'
 
   &__wrapper {
     display: flex;
-    flex-direction: column;
+
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -44,7 +61,6 @@ import MenuGamburger from './MenuGamburger.vue'
 
   &__nav {
     position: relative;
-    margin-top: auto;
   }
 
   &__title {

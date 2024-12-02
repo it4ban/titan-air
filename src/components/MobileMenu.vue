@@ -3,6 +3,7 @@ import SocialIcon from './SocialIcon.vue'
 
 const props = defineProps<{
   isOpened: boolean
+  centeredCloseIcon?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -17,8 +18,11 @@ function closeMenu() {
 <template>
   <div :class="['mobile-menu', { 'mobile-menu--open': props.isOpened }]">
     <div class="mobile-menu__wrapper">
-      <div class="mobile-menu__left-side" @click="closeMenu">
-        <button class="close-mobile">
+      <div
+        :class="['mobile-menu__left-side', { 'mobile-menu__left-side--center': centeredCloseIcon }]"
+        @click="closeMenu"
+      >
+        <button class="close-mobile close-mobile--center">
           <svg
             width="31"
             height="31"
@@ -167,6 +171,10 @@ function closeMenu() {
     align-items: center;
     padding-top: 30px;
     flex-shrink: 0;
+
+    &--center {
+      justify-content: center;
+    }
 
     @media (max-width: 510px) {
       width: 70px;
