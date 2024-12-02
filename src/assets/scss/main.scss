@@ -35,6 +35,14 @@
   }
 }
 
+.one-screen,
+.two-screen,
+.three-screen,
+.four-screen,
+.five-screen .six-screen {
+  height: 100vh;
+}
+
 .screen-title {
   display: flex;
   flex-direction: column;
