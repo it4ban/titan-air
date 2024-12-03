@@ -7,7 +7,7 @@ const offsets = ref<number[]>([])
 const touchStartY = ref(0)
 
 const moveDown = () => {
-  inMove.value = !inMove.value
+  inMove.value = true
   activeSection.value--
 
   if (activeSection.value < 0) activeSection.value = offsets.value.length - 1
@@ -48,12 +48,16 @@ export const useScreenScroll = () => {
     })
   }
 
+  console.log(offsets.value)
+
   const handleMouseWheel = (e: WheelEvent) => {
-    if (e.deltaY < 15 && !inMove.value) {
+    if (e.deltaY > 0 && !inMove.value) {
       moveUp()
-    } else if (e.deltaY > 15 && !inMove.value) {
+    } else if (e.deltaY < 0 && !inMove.value) {
       moveDown()
     }
+
+    return false
   }
 
   const handleTouchStart = (e: TouchEvent) => {

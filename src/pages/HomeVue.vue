@@ -2,6 +2,7 @@
   <main class="home">
     <OneScreenItem />
     <TwoScreenItem />
+    <ThreeScreenItem />
   </main>
 </template>
 
@@ -11,6 +12,7 @@ import { onMounted, onUnmounted } from 'vue'
 import { useScreenScroll } from '@/hooks'
 import OneScreenItem from '@/components/OneScreenItem.vue'
 import TwoScreenItem from '@/components/TwoScreenItem.vue'
+import ThreeScreenItem from '@/components/ThreeScreenItem.vue'
 
 const { handleCalculateSectionOffset, handleMouseWheel, handleTouchMove, handleTouchStart } =
   useScreenScroll()
