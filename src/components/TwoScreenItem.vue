@@ -3,7 +3,7 @@
     <div class="container">
       <div class="two-screen__wrapper">
         <div class="img-scene">
-          <div class="img-scene__air">
+          <div class="img-scene__image">
             <img
               src="@/assets/img/home/air.png"
               srcset="@/assets/img/home/air@2x.png 2x"
@@ -99,11 +99,8 @@ import ButtonItem from './ButtonItem.vue'
       grid-column: 1 / 12;
     }
 
-    @media (max-width: 498px) {
+    @media (max-width: 576px) {
       gap: 15px;
-    }
-
-    @media (max-width: 420px) {
       height: 100vh;
     }
   }
@@ -132,45 +129,25 @@ import ButtonItem from './ButtonItem.vue'
 }
 
 .img-scene {
-  grid-column: 6 span;
-  position: relative;
-
   @media (max-width: 848px) {
     grid-column: 1 / 12;
     grid-row: 2;
     align-self: center;
     justify-self: end;
     max-width: 240px;
+    position: relative;
+    bottom: 60px;
   }
 
   @media (max-width: 498px) {
     justify-self: center;
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 576px) {
     display: none;
   }
 
-  &__air {
-    position: relative;
-    z-index: 2;
-  }
-
-  &__big-circle,
-  &__small-circle {
-    z-index: 1;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 50%);
-    border-radius: 50%;
-  }
-
   &__big-circle {
-    width: 421px;
-    height: 421px;
-    background-color: rgba(35, 54, 79, 0.6);
-
     @media (max-width: 848px) {
       max-width: 220px;
       max-height: 220px;
@@ -178,10 +155,6 @@ import ButtonItem from './ButtonItem.vue'
   }
 
   &__small-circle {
-    width: 312px;
-    height: 312px;
-    background-color: rgba(69, 92, 125, 0.3);
-
     @media (max-width: 848px) {
       max-width: 120px;
       max-height: 120px;

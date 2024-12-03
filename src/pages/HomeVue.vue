@@ -34,5 +34,6 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .home {
   width: 100%;
+  overflow: hidden;
 }
 </style>
