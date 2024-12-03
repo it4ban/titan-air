@@ -21,16 +21,20 @@
             <div class="screen-title__underline"></div>
           </div>
 
-          <p class="screen-text two-screen__text">
-            Titan Airservice AS" company, established in 2006, is a team of professionals providing
-            airservices in the field of sea-crews transportation on scheduled and charter flights,
-            as well as arrangement of ground support for aircraft operating VIP flights, tourism
-            travelling programs, transportation of sports teams , official delegations and other
-            airtransportation activity worldwide. <br />
-            Due to our customers needs and expectation, our main priority is to deliver our clients
-            the best operational and financial results, while ensuring the highest level of quality
-            and individual approach without any exceptions.
-          </p>
+          <div class="two-screen__block-texts">
+            <p class="screen-text two-screen__text">
+              Titan Airservice AS" company, established in 2006, is a team of professionals
+              providing airservices in the field of sea-crews transportation on scheduled and
+              charter flights, as well as arrangement of ground support for aircraft operating VIP
+              flights, tourism travelling programs, transportation of sports teams , official
+              delegations and other airtransportation activity worldwide.
+            </p>
+            <p class="screen-text two-screen__text">
+              Due to our customers needs and expectation, our main priority is to deliver our
+              clients the best operational and financial results, while ensuring the highest level
+              of quality and individual approach without any exceptions.
+            </p>
+          </div>
 
           <ButtonItem :variant="'outline-yellow'"> Show more </ButtonItem>
         </div>
@@ -68,23 +72,84 @@ import ButtonItem from './ButtonItem.vue'
     align-items: center;
     height: 100vh;
     gap: 30px;
+    padding: 0 50px;
+
+    @media (max-width: 1120px) {
+      padding: 0;
+      gap: 15px;
+    }
+
+    @media (max-width: 848px) {
+      gap: 0;
+      grid-template-rows: repeat(2, minmax(1fr, 420px));
+      padding: 60px 0 120px;
+    }
   }
 
   &__block-right {
     grid-column: 8 / 13;
     display: flex;
     flex-direction: column;
+    align-items: start;
+    justify-content: center;
     gap: 28px;
+    min-height: 600px;
+
+    @media (max-width: 848px) {
+      grid-column: 1 / 12;
+    }
+
+    @media (max-width: 498px) {
+      gap: 15px;
+    }
+
+    @media (max-width: 420px) {
+      height: 100vh;
+    }
   }
 
   &__text {
     line-height: 25px;
+
+    @media (max-width: 498px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.screen-title {
+  &__header {
+    @media (max-width: 498px) {
+      font-size: 22px;
+    }
+  }
+
+  &__underline {
+    &::before {
+      width: 64%;
+    }
   }
 }
 
 .img-scene {
   grid-column: 6 span;
   position: relative;
+
+  @media (max-width: 848px) {
+    grid-column: 1 / 12;
+    grid-row: 2;
+    align-self: center;
+    justify-self: end;
+    max-width: 240px;
+  }
+
+  @media (max-width: 498px) {
+    justify-self: center;
+  }
+
+  @media (max-width: 420px) {
+    display: none;
+  }
 
   &__air {
     position: relative;
@@ -105,12 +170,22 @@ import ButtonItem from './ButtonItem.vue'
     width: 421px;
     height: 421px;
     background-color: rgba(35, 54, 79, 0.6);
+
+    @media (max-width: 848px) {
+      max-width: 220px;
+      max-height: 220px;
+    }
   }
 
   &__small-circle {
     width: 312px;
     height: 312px;
     background-color: rgba(69, 92, 125, 0.3);
+
+    @media (max-width: 848px) {
+      max-width: 120px;
+      max-height: 120px;
+    }
   }
 }
 </style>
