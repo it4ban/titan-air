@@ -70,9 +70,8 @@ import ButtonItem from './ButtonItem.vue'
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
-    height: 100vh;
+    justify-content: center;
     gap: 30px;
-    padding: 0 50px;
 
     @media (max-width: 1120px) {
       padding: 0;
@@ -80,9 +79,13 @@ import ButtonItem from './ButtonItem.vue'
     }
 
     @media (max-width: 848px) {
-      gap: 0;
-      grid-template-rows: repeat(2, minmax(1fr, 420px));
-      padding: 60px 0 120px;
+      row-gap: 50px;
+      padding: 20px 0;
+      height: 100%;
+    }
+
+    @media (max-width: 480px) {
+      column-gap: 0;
     }
   }
 
@@ -93,7 +96,6 @@ import ButtonItem from './ButtonItem.vue'
     align-items: start;
     justify-content: center;
     gap: 28px;
-    min-height: 600px;
 
     @media (max-width: 848px) {
       grid-column: 1 / 12;
@@ -101,7 +103,6 @@ import ButtonItem from './ButtonItem.vue'
 
     @media (max-width: 576px) {
       gap: 15px;
-      height: 100vh;
     }
   }
 

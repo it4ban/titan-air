@@ -129,6 +129,10 @@ onUnmounted(() => window.removeEventListener('mousemove', mouseMove))
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 30px;
+
+    @media (max-width: 480px) {
+      gap: 0;
+    }
   }
 
   &__block {
@@ -137,7 +141,6 @@ onUnmounted(() => window.removeEventListener('mousemove', mouseMove))
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    min-height: 600px;
 
     @media (max-width: 1120px) {
       padding: 0 20px;

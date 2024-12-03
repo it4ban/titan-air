@@ -48,8 +48,6 @@ export const useScreenScroll = () => {
     })
   }
 
-  console.log(offsets.value)
-
   const handleMouseWheel = (e: WheelEvent) => {
     if (e.deltaY > 0 && !inMove.value) {
       moveUp()

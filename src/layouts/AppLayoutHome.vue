@@ -1,6 +1,6 @@
 <template>
-  <HomeHeader v-if="screenWidth >= 1120" />
-  <HeaderItem v-if="screenWidth < 1120" />
+  <!-- <HomeHeader v-if="screenWidth >= 1120" /> -->
+  <!-- <HeaderItem v-if="screenWidth < 1120" /> -->
   <HomeSidebar v-if="screenWidth >= 1120" />
 
   <slot />

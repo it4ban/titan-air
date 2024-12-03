@@ -20,6 +20,12 @@
   padding: 0 20px;
 }
 
+.xs-container {
+  max-width: 986px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .title {
   font-size: 36px;
   font-weight: 900;
@@ -39,8 +45,13 @@
 .two-screen,
 .three-screen,
 .four-screen,
-.five-screen .six-screen {
+.five-screen,
+.six-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+  min-height: max-content;
 }
 
 .screen-title {

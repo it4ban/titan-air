@@ -26,12 +26,14 @@ import LangSwitcherItem from './LangSwitcherItem.vue'
 const { activeSection } = useScreenScroll()
 const currentIndex = ref(0)
 
+console.log(currentIndex.value)
+
 const updateActiveIndex = () => {
   currentIndex.value = activeSection.value
 }
 
-onMounted(() => window.addEventListener('scroll', updateActiveIndex))
-onUnmounted(() => window.removeEventListener('scroll', updateActiveIndex))
+onMounted(() => window.addEventListener('wheel', updateActiveIndex))
+onUnmounted(() => window.removeEventListener('wheel', updateActiveIndex))
 </script>
 
 <style scoped lang="scss">

@@ -62,14 +62,12 @@ import ButtonItem from './ButtonItem.vue'
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 30px;
-    min-height: 600px;
-    height: 100vh;
 
     @media (max-width: 920px) {
       padding: 120px 0;
     }
 
-    @media (max-width: 398px) {
+    @media (max-width: 480px) {
       gap: 0;
     }
   }
