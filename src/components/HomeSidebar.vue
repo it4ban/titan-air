@@ -61,6 +61,7 @@ const handleMenuOpened = () => {
 
   &__nav {
     position: relative;
+    top: 15px;
   }
 
   &__title {

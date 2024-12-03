@@ -5,6 +5,7 @@
     <ThreeScreenItem />
     <FourScreenItem />
     <FiveScreenItem />
+    <SixScreenItem />
   </main>
 </template>
 
@@ -17,9 +18,9 @@ import TwoScreenItem from '@/components/TwoScreenItem.vue'
 import ThreeScreenItem from '@/components/ThreeScreenItem.vue'
 import FourScreenItem from '@/components/FourScreenItem.vue'
 import FiveScreenItem from '@/components/FiveScreenItem.vue'
+import SixScreenItem from '@/components/SixScreenItem.vue'
 
-const { handleCalculateSectionOffset, handleMouseWheel, handleTouchMove, handleTouchStart } =
-  useScreenScroll()
+const { handleCalculateSectionOffset, handleMouseWheel } = useScreenScroll()
 
 onBeforeMount(() => {
   handleCalculateSectionOffset()
@@ -29,14 +30,10 @@ onMounted(() => {
   handleCalculateSectionOffset()
 
   window.addEventListener('wheel', handleMouseWheel)
-  // window.addEventListener('touchstart', handleTouchStart)
-  // window.addEventListener('touchmove', handleTouchMove)
 })
 
 onUnmounted(() => {
   window.removeEventListener('wheel', handleMouseWheel)
-  // window.removeEventListener('touchstart', handleTouchStart)
-  // window.removeEventListener('touchmove', handleTouchMove)
 })
 </script>
 

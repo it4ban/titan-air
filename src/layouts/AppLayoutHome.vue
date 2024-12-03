@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import HomeHeader from '@/components/HomeHeader.vue'
-import HeaderItem from '@/components/HeaderItem.vue'
+// import HomeHeader from '@/components/HomeHeader.vue'
+// import HeaderItem from '@/components/HeaderItem.vue'
 import HomeSidebar from '@/components/HomeSidebar.vue'
 
 import { useBreakpoints } from '@/hooks'
