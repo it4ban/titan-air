@@ -4,7 +4,6 @@ const inMove = ref(false)
 const inMoveDelay = ref(400)
 const activeSection = ref(0)
 const offsets = ref<number[]>([])
-const touchStartY = ref(0)
 
 const moveDown = () => {
   inMove.value = true
@@ -58,30 +57,9 @@ export const useScreenScroll = () => {
     return false
   }
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartY.value = e.touches[0].clientY
-  }
-
-  const handleTouchMove = (e: TouchEvent) => {
-    if (inMove.value) return false
-
-    const currentY = e.touches[0].clientY
-
-    if (touchStartY.value < currentY) {
-      moveDown()
-    } else {
-      moveUp()
-    }
-
-    touchStartY.value = 0
-    return false
-  }
-
   return {
     activeSection,
     handleCalculateSectionOffset,
     handleMouseWheel,
-    handleTouchStart,
-    handleTouchMove,
   }
 }

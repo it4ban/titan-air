@@ -1,5 +1,5 @@
 <template>
-  <!-- <HomeHeader v-if="screenWidth >= 1120" /> -->
+  <HomeHeader v-if="screenWidth >= 1120" />
 
   <HeaderItem v-if="screenWidth < 1120" />
 
@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-// import HomeHeader from '@/components/HomeHeader.vue'
+import HomeHeader from '@/components/HomeHeader.vue'
 import HeaderItem from '@/components/HeaderItem.vue'
 import HomeSidebar from '@/components/HomeSidebar.vue'
 

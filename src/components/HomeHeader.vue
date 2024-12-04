@@ -4,19 +4,17 @@
       <LogoItem />
 
       <div class="header-home__right">
-        <SearchFormItem :transparent="true" :iconVariant="currentIndex > 0 ? 'light' : 'dark'" />
+        <SearchFormItem :transparent="true" :iconVariant="activeSection > 0 ? 'light' : 'dark'" />
 
-        <ContactsLinkIcon :iconVariant="currentIndex > 0 ? 'light' : 'dark'" />
+        <ContactsLinkIcon :iconVariant="activeSection > 0 ? 'light' : 'dark'" />
 
-        <LangSwitcherItem :transparent="true" :variant="currentIndex > 0 ? 'lighten' : 'darken'" />
+        <LangSwitcherItem :transparent="true" :variant="activeSection > 0 ? 'lighten' : 'darken'" />
       </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
 import { useScreenScroll } from '@/hooks'
 import LogoItem from './LogoItem.vue'
 import SearchFormItem from './SearchFormItem.vue'
@@ -24,16 +22,6 @@ import ContactsLinkIcon from './ContactsLinkIcon.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
 
 const { activeSection } = useScreenScroll()
-const currentIndex = ref(0)
-
-console.log(currentIndex.value)
-
-const updateActiveIndex = () => {
-  currentIndex.value = activeSection.value
-}
-
-onMounted(() => window.addEventListener('wheel', updateActiveIndex))
-onUnmounted(() => window.removeEventListener('wheel', updateActiveIndex))
 </script>
 
 <style scoped lang="scss">

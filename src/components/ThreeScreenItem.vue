@@ -18,7 +18,7 @@
           <ButtonItem :variant="'outline-yellow'"> Show more </ButtonItem>
         </div>
 
-        <div class="img-scene">
+        <div ref="container" class="img-scene">
           <div class="img-scene__image">
             <img
               src="@/assets/img/home/earth.png"
@@ -36,7 +36,22 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+import { useAnimationTransform } from '@/hooks'
 import ButtonItem from './ButtonItem.vue'
+
+const container = ref<HTMLElement | null>(null)
+let animation: (event: MouseEvent) => void
+
+onMounted(() => {
+  const { playAnimation } = useAnimationTransform(container.value)
+  animation = playAnimation
+
+  container.value?.addEventListener('mousemove', animation)
+})
+
+onUnmounted(() => container.value?.removeEventListener('mousemove', animation))
 </script>
 
 <style scoped lang="scss">
