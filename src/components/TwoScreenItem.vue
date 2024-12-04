@@ -2,7 +2,7 @@
   <section class="two-screen">
     <div class="container">
       <div class="two-screen__wrapper">
-        <div class="img-scene">
+        <div class="img-scene" ref="container" @mousemove="playAnimation">
           <div class="img-scene__image">
             <img
               src="@/assets/img/home/air.png"
@@ -44,7 +44,29 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import gsap from 'gsap'
 import ButtonItem from './ButtonItem.vue'
+
+const container = ref<HTMLElement | null>(null)
+const offsetX = ref(0)
+const offsetY = ref(0)
+
+const playAnimation = (event: MouseEvent) => {
+  if (!container.value) return
+
+  const bounds = container.value.getBoundingClientRect()
+
+  offsetX.value = (event.clientX - bounds.left - bounds.width / 2) / bounds.width
+  offsetY.value = (event.clientY - bounds.top - bounds.height / 2) / bounds.height
+
+  gsap.to('.img-scene__image img', {
+    x: offsetX.value * 15,
+    y: offsetY.value * 15,
+    duration: 0.5,
+    ease: 'power2.out',
+  })
+}
 </script>
 
 <style scoped lang="scss">
