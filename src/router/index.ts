@@ -8,6 +8,7 @@ import AboutVue from '@/pages/AboutVue.vue'
 import { RoutePathsEnum } from './router.types'
 import { AppLayoutsEnum } from '@/layouts/layouts.types'
 import { loadLayoutMiddleware } from './loadLayout.middleware'
+import NewsVue from '@/pages/NewsVue.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -40,6 +41,14 @@ const router = createRouter({
       path: `/about_us`,
       name: RoutePathsEnum.aboutUs,
       component: AboutVue,
+      meta: {
+        layout: AppLayoutsEnum.default,
+      },
+    },
+    {
+      path: '/news',
+      name: RoutePathsEnum.news,
+      component: NewsVue,
       meta: {
         layout: AppLayoutsEnum.default,
       },
