@@ -31,8 +31,8 @@ defineProps<{
   &--blue {
     transition: all vars.$transition;
 
-    svg path {
-      transition: all vars.$transition;
+    ::v-deep(svg path) {
+      transition: all 0.3s ease-in-out;
     }
   }
 
@@ -50,6 +50,18 @@ defineProps<{
 
   &--blue {
     border: 1px solid vars.$blue;
+    ::v-deep(svg path) {
+      fill: vars.$blue;
+    }
+
+    @include mixins.hover {
+      border-color: transparent;
+      background-color: vars.$yellow;
+
+      ::v-deep(svg path) {
+        fill: vars.$light;
+      }
+    }
   }
 }
 </style>

@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHashHistory, createRouter } from 'vue-router'
 
 import HomeVue from '@/pages/HomeVue.vue'
 import ServiceVue from '@/pages/ServiceVue.vue'
@@ -11,7 +11,7 @@ import { loadLayoutMiddleware } from './loadLayout.middleware'
 import NewsVue from '@/pages/NewsVue.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_BASE_URL),
+  history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: `/`,

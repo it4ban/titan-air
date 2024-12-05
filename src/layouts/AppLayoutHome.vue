@@ -1,7 +1,7 @@
 <template>
   <HomeHeader v-if="screenWidth >= 1120" />
 
-  <HeaderItem v-if="screenWidth < 1120" />
+  <HeaderItem v-if="screenWidth < 1120" :headerToggled="true" />
 
   <HomeSidebar v-if="screenWidth >= 1120" />
 

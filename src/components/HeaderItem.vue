@@ -9,6 +9,10 @@ import { ref } from 'vue'
 const isOpened = ref(false)
 const isOpenHeader = ref(false)
 
+defineProps<{
+  headerToggled?: boolean
+}>()
+
 const toggleMenu = () => {
   isOpened.value = !isOpened.value
 }
@@ -22,7 +26,7 @@ const toggleHeader = () => {
   <MobileMenu v-model:isOpened="isOpened" />
 
   <div :class="['header', { 'header--hidden': isOpenHeader }]">
-    <button class="header-toggle" @click="toggleHeader">
+    <button v-if="headerToggled" class="header-toggle" @click="toggleHeader">
       <div class="header-toggle__wrapper">
         <svg
           width="12"

@@ -7,7 +7,17 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx(), vueDevTools()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['swiper-container', 'swiper-slide'].includes(tag),
+        },
+      },
+    }),
+    vueJsx(),
+    vueDevTools(),
+  ],
   css: {
     preprocessorOptions: {
       scss: {
