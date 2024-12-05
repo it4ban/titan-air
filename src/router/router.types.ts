@@ -14,4 +14,5 @@ export enum RoutePathsEnum {
   contacts = 'contacts',
   aboutUs = 'aboutUs',
   news = 'news',
+  search = 'search',
 }

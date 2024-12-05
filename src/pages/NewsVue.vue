@@ -243,16 +243,7 @@ import BottomSlider from '@/components/BottomSlider.vue'
   }
 }
 
-.news-bottom {
-}
-
 .news-media {
-  &__wrapper {
-  }
-
-  &__title {
-  }
-
   &__socials {
     padding: 38px 0 29px;
     display: flex;
@@ -270,8 +261,5 @@ import BottomSlider from '@/components/BottomSlider.vue'
       justify-content: center;
     }
   }
-}
-
-.underline {
 }
 </style>
