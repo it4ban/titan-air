@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MobileMenu from './MobileMenu.vue'
 import LogoItem from './LogoItem.vue'
-import SearchFormItem from './SearchFormItem.vue'
+import SearchFormItem from './SearchIcon.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
 
 import { ref } from 'vue'

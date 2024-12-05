@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { useScreenScroll } from '@/hooks'
 import LogoItem from './LogoItem.vue'
-import SearchFormItem from './SearchFormItem.vue'
+import SearchFormItem from './SearchIcon.vue'
 import ContactsLinkIcon from './ContactsLinkIcon.vue'
 import LangSwitcherItem from './LangSwitcherItem.vue'
 
