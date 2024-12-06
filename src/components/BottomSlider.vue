@@ -2,10 +2,7 @@
   <div class="slider-title">
     <div class="container">
       <div class="slider-title__wrapper">
-        <p class="slider-title__text">
-          <span>{{ sliderTitle.split(' ')[0] }}</span>
-          {{ sliderTitle.split(' ').slice(1).join(' ') }}
-        </p>
+        <TitleMulticolor :title="sliderTitle" :mainColor="'yellow'" :titleColor="'blue'" />
       </div>
     </div>
   </div>
@@ -146,6 +143,7 @@
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 import { register } from 'swiper/element'
+import TitleMulticolor from './TitleMulticolor.vue'
 
 register()
 

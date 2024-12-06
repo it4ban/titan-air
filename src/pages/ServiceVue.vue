@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ServiceFilterItem from '@/components/ServiceFilterItem.vue'
 import BannerItem from '@/components/BannerItem.vue'
+import TitleMulticolor from '@/components/TitleMulticolor.vue'
 
 import serviceBg from '@/assets/img/support/top-bg.jpg'
 import planeImg from '@/assets/img/support/plane.png'
@@ -19,7 +20,11 @@ import planeImgX2 from '@/assets/img/support/plane@2x.png'
       <section class="page">
         <div class="container">
           <div class="page-description">
-            <p class="title"><span>Flight</span> support service</p>
+            <TitleMulticolor
+              title="Flight support service"
+              :mainColor="'blue'"
+              :titleColor="'yellow'"
+            />
 
             <p class="page-description__text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -45,7 +50,6 @@ import planeImgX2 from '@/assets/img/support/plane@2x.png'
 <style scoped lang="scss">
 .all {
   width: 100%;
-  padding-top: 100px;
 
   &__wrapper {
     padding: 0 0 57px;

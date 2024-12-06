@@ -1,10 +1,14 @@
 <template>
   <main class="about-us">
-    <BannerItem
-      :bannerImage="aboutUsImg"
-      :bannerImageX2="aboutUsImgX2"
-      :bannerStyle="{ backgroundImage: `url(${aboutUsBanner})` }"
-    />
+    <div class="about-us__wrapper">
+      <BannerItem
+        :bannerImage="aboutUsImg"
+        :bannerImageX2="aboutUsImgX2"
+        :bannerStyle="{ backgroundImage: `url(${aboutUsBanner})` }"
+      />
+
+      <div class="banner-description"></div>
+    </div>
   </main>
 </template>
 

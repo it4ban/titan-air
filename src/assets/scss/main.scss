@@ -27,21 +27,6 @@
   padding: 0 20px;
 }
 
-.title {
-  font-size: 36px;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: vars.$blue;
-
-  @media (max-width: 348px) {
-    font-size: 22px;
-  }
-
-  span {
-    color: vars.$yellow;
-  }
-}
-
 .one-screen,
 .two-screen,
 .three-screen,

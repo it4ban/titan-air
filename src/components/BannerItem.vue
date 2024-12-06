@@ -31,10 +31,11 @@ defineProps<{
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 300px;
+  height: 400px;
+  padding-top: 100px;
 
   @media (max-width: 420px) {
-    height: 250px;
+    height: 350px;
   }
 
   &__img {
@@ -48,7 +49,7 @@ defineProps<{
     }
 
     @media (max-width: 378px) {
-      padding-top: 50px;
+      padding-top: 35px;
     }
   }
 }
