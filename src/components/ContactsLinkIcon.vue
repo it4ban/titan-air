@@ -1,6 +1,6 @@
 <template>
-  <a
-    href="#"
+  <RouterLink
+    to="/contacts"
     :class="[
       'icon icon--transparent contacts-link',
       { 'contacts-link--light': iconVariant === 'light' },
@@ -16,10 +16,12 @@
         fill="white"
       />
     </svg>
-  </a>
+  </RouterLink>
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 defineProps<{
   iconVariant?: 'light' | 'dark'
 }>()

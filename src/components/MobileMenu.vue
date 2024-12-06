@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 import SocialIcon from './SocialIcon.vue'
 
 const props = defineProps<{
@@ -42,10 +44,14 @@ function closeMenu() {
       <div class="mobile-menu__right-side">
         <ul class="nav-mobile">
           <li class="nav-mobile__item">
-            <a href="#" class="contrast-header nav-mobile__link">About us</a>
+            <RouterLink to="/about_us" class="contrast-header nav-mobile__link" @click="closeMenu">
+              About
+            </RouterLink>
           </li>
           <li class="nav-mobile__item">
-            <a href="#" class="contrast-header nav-mobile__link">Flight support service</a>
+            <RouterLink to="/service" class="contrast-header nav-mobile__link" @click="closeMenu"
+              >Flight support service</RouterLink
+            >
           </li>
           <li class="nav-mobile__item">
             <a href="#" class="contrast-header nav-mobile__link">Travel agency</a>
@@ -54,7 +60,9 @@ function closeMenu() {
             <a href="#" class="contrast-header nav-mobile__link">Charter flights</a>
           </li>
           <li class="nav-mobile__item">
-            <a href="#" class="contrast-header nav-mobile__link">Contact us</a>
+            <RouterLink to="/contacts" class="contrast-header nav-mobile__link" @click="closeMenu"
+              >Contact us</RouterLink
+            >
           </li>
         </ul>
 
