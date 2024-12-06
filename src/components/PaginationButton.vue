@@ -20,6 +20,43 @@
   border: 1px solid rgba(29, 45, 66, 0.3);
   border-radius: 50%;
   transition: all vars.$transition;
+  margin-right: 25px;
+
+  @media (max-width: 620px) {
+    margin-right: 15px;
+  }
+
+  @media (max-width: 520px) {
+    margin-right: 10px;
+
+    &:nth-child(5) {
+      display: none;
+    }
+
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 398px) {
+    margin-right: 7px;
+  }
+
+  &:nth-child(even) {
+    margin-right: 24px;
+
+    @media (max-width: 620px) {
+      margin-right: 14px;
+    }
+
+    @media (max-width: 520px) {
+      margin-right: 9px;
+    }
+
+    @media (max-width: 398px) {
+      margin-right: 6px;
+    }
+  }
 
   ::v-deep(svg path) {
     transition: all 0.3s ease-in-out;

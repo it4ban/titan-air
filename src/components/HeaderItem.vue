@@ -103,6 +103,11 @@ const toggleHeader = () => {
       height: 0;
     }
 
+    .menu-gamburger {
+      height: 0;
+      overflow: hidden;
+    }
+
     .header-toggle {
       &__wrapper {
         transform: rotate(-270deg);
@@ -122,7 +127,6 @@ const toggleHeader = () => {
     opacity: 1;
     height: 100px;
     transition: all vars.$transition;
-    overflow: hidden;
 
     @media (max-width: 648px) {
       padding-right: 15px;
@@ -200,6 +204,7 @@ const toggleHeader = () => {
   align-items: center;
   justify-content: center;
   gap: 5px;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     .menu-gamburger__line {
