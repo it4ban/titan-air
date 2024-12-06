@@ -124,7 +124,13 @@ const toggleHeader = () => {
     gap: 26px;
 
     @media (max-width: 648px) {
-      display: none;
+      ::v-deep(.search-form) {
+        display: none;
+      }
+
+      ::v-deep(.contacts-link) {
+        display: none;
+      }
     }
   }
 }

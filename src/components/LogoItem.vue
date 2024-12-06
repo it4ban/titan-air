@@ -55,9 +55,15 @@
     font-size: 18px;
     font-weight: 600;
 
-    @media (max-width: 398px) {
+    @media (max-width: 464px) {
+      font-size: 16px;
       text-align: right;
-      max-width: max-content;
+      width: max-content;
+    }
+
+    @media (max-width: 420px) {
+      width: auto;
+      max-width: 320px;
     }
 
     span {
