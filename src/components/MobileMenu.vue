@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 
 import SocialIcon from './SocialIcon.vue'
+import SearchIcon from './SearchIcon.vue'
+import ContactsLinkIcon from './ContactsLinkIcon.vue'
 
 const props = defineProps<{
   isOpened: boolean
@@ -131,6 +133,11 @@ function closeMenu() {
               />
             </svg>
           </SocialIcon>
+        </div>
+
+        <div class="nav-mobile__bottom-icons">
+          <SearchIcon iconVariant="light" />
+          <ContactsLinkIcon iconVariant="light" />
         </div>
       </div>
     </div>
@@ -263,6 +270,35 @@ function closeMenu() {
     @media (max-width: 510px) {
       margin-left: auto;
       padding-right: 0;
+    }
+
+    @media (max-width: 368px) {
+      gap: 12px;
+    }
+  }
+
+  &__bottom-icons {
+    display: none;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+    padding-right: 45px;
+
+    @media (max-width: 510px) {
+      padding-right: 0px;
+    }
+
+    @media (max-width: 648px) {
+      display: flex;
+    }
+
+    ::v-deep(.icon) {
+      background-color: transparent;
+
+      &:hover {
+        background-color: vars.$blue;
+      }
     }
 
     @media (max-width: 368px) {

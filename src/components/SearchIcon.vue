@@ -165,7 +165,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
   width: 100%;
 
   &__wrapper {
-    padding: 25px 35px 0;
+    padding: 25px 20px 0;
   }
 
   &__button {
