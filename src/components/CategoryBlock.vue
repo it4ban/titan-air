@@ -1,5 +1,7 @@
 <template>
-  <div class="category-block">
+  <div
+    :class="['category-block', { 'animate__animated animate__fadeInLeft': activeSection === 3 }]"
+  >
     <div class="category-block__wrapper">
       <div class="category-number">
         <slot name="number" />
@@ -16,7 +18,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useScreenScroll } from '@/hooks'
+
+const { activeSection } = useScreenScroll()
+</script>
 
 <style scoped lang="scss">
 @use '@/assets/scss/vars';

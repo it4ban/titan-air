@@ -2,11 +2,18 @@
   <section class="five-screen">
     <div class="xs-container">
       <div class="five-screen__wrapper">
-        <div class="screen-title">
+        <div
+          :class="['screen-title', { 'animate__animated animate__flipInY': activeSection === 4 }]"
+        >
           <span class="screen-title__header"><span>Our </span>Partners</span>
         </div>
 
-        <p class="screen-text five-screen__text">
+        <p
+          :class="[
+            'screen-text five-screen__text',
+            { 'animate__animated animate__bounceIn': activeSection === 4 },
+          ]"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
           ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -14,7 +21,12 @@
         </p>
 
         <div class="partners">
-          <div class="partners__wrapper">
+          <div
+            :class="[
+              'partners__wrapper',
+              { 'animate__animated animate__fadeInBottomRight': activeSection === 4 },
+            ]"
+          >
             <div class="partners__block">
               <img
                 src="@/assets/img/home/partners/delta.png"
@@ -46,7 +58,12 @@
             </div>
           </div>
 
-          <div class="partners__wrapper">
+          <div
+            :class="[
+              'partners__wrapper',
+              { 'animate__animated animate__fadeInBottomLeft': activeSection === 4 },
+            ]"
+          >
             <div class="partners__block">
               <img
                 src="@/assets/img/home/partners/british-airways.png"
@@ -83,7 +100,11 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useScreenScroll } from '@/hooks'
+
+const { activeSection } = useScreenScroll()
+</script>
 
 <style scoped lang="scss">
 @use '@/assets/scss/vars';

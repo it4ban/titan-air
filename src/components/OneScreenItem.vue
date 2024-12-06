@@ -5,7 +5,12 @@
 
     <div class="container">
       <div class="one-screen__wrapper">
-        <div class="one-screen__block">
+        <div
+          :class="[
+            'one-screen__block',
+            { 'animate__animated animate__rubberBand': activeSection === 0 },
+          ]"
+        >
           <div class="screen-title">
             <span class="screen-title__header"><span>best</span> partner for you </span>
             <div class="screen-title__underline"></div>
@@ -28,7 +33,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
-import { useAnimationWidth } from '@/hooks'
+import { useAnimationWidth, useScreenScroll } from '@/hooks'
 import ButtonItem from './ButtonItem.vue'
 
 const figureOne = ref<HTMLElement | null>(null)
@@ -39,6 +44,7 @@ const { mouseMove } = useAnimationWidth({
   fOneWidth: 70,
   fTwoWidth: 80,
 })
+const { activeSection } = useScreenScroll()
 
 onMounted(() => window.addEventListener('mousemove', mouseMove))
 onUnmounted(() => window.removeEventListener('mousemove', mouseMove))

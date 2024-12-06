@@ -2,13 +2,23 @@
   <section class="six-screen">
     <div class="xs-container">
       <div class="six-screen__wrapper">
-        <div class="screen-title">
+        <div
+          :class="[
+            'screen-title',
+            { 'animate__animated animate__lightSpeedInLeft': activeSection === 5 },
+          ]"
+        >
           <span class="screen-title__header"><span>Contact</span> us</span>
           <div class="screen-title__underline"></div>
         </div>
 
         <div class="six-screen__content">
-          <div class="contact-info">
+          <div
+            :class="[
+              'contact-info',
+              { 'animate__animated animate__lightSpeedInLeft': activeSection === 5 },
+            ]"
+          >
             <div class="contact-info__wrapper">
               <div class="contact-info__item">
                 <span class="contrast-header">ADDRESS:</span>
@@ -46,7 +56,12 @@
             </div>
           </div>
 
-          <div class="contact-media">
+          <div
+            :class="[
+              'contact-media',
+              { 'animate__animated animate__lightSpeedInRight': activeSection === 5 },
+            ]"
+          >
             <div class="contact-media__top">
               <div class="mail-block">
                 <span class="contrast-header">E-MAIL:</span>
@@ -145,8 +160,11 @@
 </template>
 
 <script setup lang="ts">
+import { useScreenScroll } from '@/hooks'
 import SocialIcon from './SocialIcon.vue'
 import ButtonItem from './ButtonItem.vue'
+
+const { activeSection } = useScreenScroll()
 </script>
 
 <style scoped lang="scss">

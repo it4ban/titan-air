@@ -15,7 +15,12 @@
           <div class="img-scene__small-circle"></div>
         </div>
 
-        <div class="two-screen__block-right">
+        <div
+          :class="[
+            'two-screen__block-right',
+            { 'animate__animated animate__bounceIn': activeSection === 1 },
+          ]"
+        >
           <div class="screen-title">
             <span class="screen-title__header"><span>About</span> us</span>
             <div class="screen-title__underline"></div>
@@ -45,11 +50,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useAnimationTransform } from '@/hooks'
+import { useAnimationTransform, useScreenScroll } from '@/hooks'
 import ButtonItem from './ButtonItem.vue'
 
 const container = ref<HTMLElement | null>(null)
 let animation: (event: MouseEvent) => void
+
+const { activeSection } = useScreenScroll()
 
 onMounted(() => {
   const { playAnimation } = useAnimationTransform(container.value)

@@ -2,7 +2,12 @@
   <section class="four-screen">
     <div class="xs-container">
       <div class="four-screen__wrapper">
-        <div class="four-screen__top">
+        <div
+          :class="[
+            'four-screen__top',
+            { 'animate__animated animate__bounceIn': activeSection === 3 },
+          ]"
+        >
           <div class="four-screen__top-wrapper">
             <div class="screen-title">
               <span class="screen-title__header"><span>Charter</span> flights</span>
@@ -13,7 +18,12 @@
           </div>
         </div>
 
-        <p class="screen-text four-screen__text">
+        <p
+          :class="[
+            'screen-text four-screen__text',
+            { 'animate__animated animate__flipInX': activeSection === 3 },
+          ]"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
           ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -61,8 +71,11 @@
 </template>
 
 <script setup lang="ts">
+import { useScreenScroll } from '@/hooks'
 import ButtonItem from './ButtonItem.vue'
 import CategoryBlock from './CategoryBlock.vue'
+
+const { activeSection } = useScreenScroll()
 </script>
 
 <style scoped lang="scss">

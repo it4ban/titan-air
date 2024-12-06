@@ -1,3 +1,4 @@
+import 'animate.css'
 import './assets/scss/main.scss'
 
 import { YANDEX_API_KEY } from '@/constants'

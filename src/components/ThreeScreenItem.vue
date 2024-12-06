@@ -2,7 +2,12 @@
   <section class="three-screen">
     <div class="container">
       <div class="three-screen__wrapper">
-        <div class="three-screen__block-left">
+        <div
+          :class="[
+            'three-screen__block-left',
+            { 'animate__animated animate__rubberBand': activeSection === 2 },
+          ]"
+        >
           <div class="screen-title">
             <span class="screen-title__header"><span>Travel</span> agency</span>
             <div class="screen-title__underline"></div>
@@ -38,11 +43,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
-import { useAnimationTransform } from '@/hooks'
+import { useAnimationTransform, useScreenScroll } from '@/hooks'
 import ButtonItem from './ButtonItem.vue'
 
 const container = ref<HTMLElement | null>(null)
 let animation: (event: MouseEvent) => void
+
+const { activeSection } = useScreenScroll()
 
 onMounted(() => {
   const { playAnimation } = useAnimationTransform(container.value)
