@@ -114,6 +114,8 @@
           </div>
         </div>
       </div>
+
+      <MainSlider sliderTitle="Our photos" />
     </div>
   </main>
 </template>
@@ -127,6 +129,7 @@ import aboutUsImgX2 from '@/assets/img/about-us/about-logo@2x.png'
 import TitleMulticolor from '@/components/TitleMulticolor.vue'
 import ButtonItem from '@/components/ButtonItem.vue'
 import SocialIcon from '@/components/SocialIcon.vue'
+import MainSlider from '@/components/MainSlider.vue'
 </script>
 
 <style scoped lang="scss">
@@ -141,6 +144,10 @@ import SocialIcon from '@/components/SocialIcon.vue'
     display: flex;
     flex-direction: column;
     padding: 40px 0 37px;
+
+    @media (max-width: 478px) {
+      padding: 25px 0 22px;
+    }
   }
 
   &__text {
@@ -148,18 +155,42 @@ import SocialIcon from '@/components/SocialIcon.vue'
     line-height: 156%;
     color: vars.$blue;
     padding: 26px 0 42px;
+
+    @media (max-width: 748px) {
+      padding: 25px 0 32px;
+    }
+
+    @media (max-width: 478px) {
+      padding: 15px 0 18px;
+    }
   }
 
   &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 748px) {
+      flex-direction: column;
+      align-items: start;
+      gap: 25px;
+    }
   }
 
   &__socials {
     display: flex;
     align-items: center;
     gap: 46px;
+
+    @media (max-width: 898px) {
+      gap: 25px;
+    }
+
+    @media (max-width: 478px) {
+      flex-direction: column;
+      align-items: start;
+      gap: 18px;
+    }
   }
 
   &__socials-header {
@@ -172,10 +203,18 @@ import SocialIcon from '@/components/SocialIcon.vue'
   &__socials-wrapper {
     display: flex;
     gap: 48px;
+
+    @media (max-width: 898px) {
+      gap: 20px;
+    }
   }
 }
 
 .underline {
   margin-top: 42px;
+
+  @media (max-width: 748px) {
+    margin-top: 24px;
+  }
 }
 </style>

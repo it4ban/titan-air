@@ -143,6 +143,7 @@
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 import { register } from 'swiper/element'
+
 import TitleMulticolor from './TitleMulticolor.vue'
 
 register()
