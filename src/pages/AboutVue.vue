@@ -115,7 +115,10 @@
         </div>
       </div>
 
-      <MainSlider sliderTitle="Our photos" />
+      <div class="about-us__sliders">
+        <MainSlider sliderTitle="Our photos" />
+        <BottomSlider sliderTitle="last news" />
+      </div>
     </div>
   </main>
 </template>
@@ -130,6 +133,7 @@ import TitleMulticolor from '@/components/TitleMulticolor.vue'
 import ButtonItem from '@/components/ButtonItem.vue'
 import SocialIcon from '@/components/SocialIcon.vue'
 import MainSlider from '@/components/MainSlider.vue'
+import BottomSlider from '@/components/BottomSlider.vue'
 </script>
 
 <style scoped lang="scss">
@@ -137,6 +141,12 @@ import MainSlider from '@/components/MainSlider.vue'
 
 .about-us {
   width: 100%;
+
+  &__sliders {
+    ::v-deep(.slider-title) {
+      padding-top: 40px;
+    }
+  }
 }
 
 .banner-description {
