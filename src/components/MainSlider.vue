@@ -4,7 +4,7 @@
       <TitleMulticolor :title="sliderTitle" :mainColor="'yellow'" :titleColor="'blue'" />
     </div>
 
-    <div class="slider">
+    <div class="slider" id="main-slider">
       <swiper-container
         :slides-per-view="1.164"
         :navigation-next-el="'.slider-bottom__right'"
@@ -24,6 +24,9 @@
               src="@/assets/img/about-us/our-photos/1.jpg"
               srcset="@/assets/img/about-us/our-photos/1@2x.jpg 2x"
               alt="Img slide"
+              data-pswp-width="500"
+              data-pswp-height="500"
+              target="_blank"
             />
           </div>
         </swiper-slide>
@@ -33,6 +36,9 @@
               src="@/assets/img/about-us/our-photos/1.jpg"
               srcset="@/assets/img/about-us/our-photos/1@2x.jpg 2x"
               alt="Img slide"
+              data-pswp-width="500"
+              data-pswp-height="500"
+              target="_blank"
             />
           </div>
         </swiper-slide>
@@ -130,9 +136,14 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 import { register } from 'swiper/element'
+
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import 'photoswipe/style.css'
 
 import TitleMulticolor from './TitleMulticolor.vue'
 
@@ -143,6 +154,23 @@ Swiper.use([Navigation])
 defineProps<{
   sliderTitle: string
 }>()
+
+let lightbox: PhotoSwipeLightbox | null = null
+
+onMounted(() => {
+  lightbox = new PhotoSwipeLightbox({
+    gallery: '#main-slider',
+    children: '.slider-item img',
+    pswpModule: () => import('photoswipe'),
+  })
+
+  lightbox.init()
+})
+
+onUnmounted(() => {
+  lightbox?.destroy()
+  lightbox = null
+})
 </script>
 
 <style scoped lang="scss">

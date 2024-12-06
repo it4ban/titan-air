@@ -108,9 +108,6 @@ const { activeSection } = useScreenScroll()
     }
   }
 
-  &__top {
-  }
-
   &__top-wrapper {
     display: flex;
     justify-content: space-between;
@@ -158,8 +155,5 @@ const { activeSection } = useScreenScroll()
       width: 51%;
     }
   }
-}
-
-.screen-text {
 }
 </style>
