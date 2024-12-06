@@ -9,6 +9,14 @@
         :slides-per-view="1.164"
         :navigation-next-el="'.slider-bottom__right'"
         :navigation-prev-el="'.slider-bottom__left'"
+        :breakpoints="{
+          620: {
+            slidesPerView: 1.164,
+          },
+          0: {
+            slidesPerView: 1,
+          },
+        }"
       >
         <swiper-slide>
           <div class="slider-item">
@@ -175,6 +183,10 @@ defineProps<{
   align-items: center;
   z-index: 2;
 
+  @media (max-width: 620px) {
+    height: 45px;
+  }
+
   &__left {
     background-color: rgba(29, 45, 66, 0.7);
     width: 100%;
@@ -185,6 +197,14 @@ defineProps<{
     gap: 37px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    @media (max-width: 460px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 398px) {
+      gap: 10px;
+    }
 
     @include mixins.hover {
       svg {
@@ -203,6 +223,10 @@ defineProps<{
     align-items: center;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+
+    @media (max-width: 460px) {
+      width: 220px;
+    }
 
     svg {
       transition: all 0.3s ease-in-out;
@@ -230,10 +254,31 @@ defineProps<{
   align-items: center;
   justify-content: center;
   gap: 28px;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 460px) {
+    gap: 15px;
+
+    svg {
+      width: 50px;
+    }
+  }
+
+  @media (max-width: 398px) {
+    font-size: 12px;
+  }
 }
 
 .navigation-next {
   padding-left: 28px;
+
+  @media (max-width: 460px) {
+    padding-left: 15px;
+    padding-right: 10px;
+  }
 }
 
 .fullscreen-button {
@@ -243,6 +288,10 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 398px) {
+    width: 40px;
+  }
 
   svg {
     transition: all 0.4s ease;

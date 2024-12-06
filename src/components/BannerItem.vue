@@ -47,10 +47,6 @@ defineProps<{
     @media (max-width: 576px) {
       padding-top: 20px;
     }
-
-    @media (max-width: 378px) {
-      padding-top: 35px;
-    }
   }
 }
 </style>
