@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import SocialIcon from './SocialIcon.vue'
@@ -17,6 +18,15 @@ const emit = defineEmits<{
 function closeMenu() {
   emit('update:isOpened', false)
 }
+
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && props.isOpened) {
+    closeMenu()
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeyDown))
+onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 </script>
 
 <template>
