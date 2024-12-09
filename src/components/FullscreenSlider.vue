@@ -5,23 +5,23 @@
       { 'fullscreen-slider--active': mainSliderStore.fullscreenEnabled },
     ]"
   >
+    <button class="close-fullscreen" @click="mainSliderStore.toggleFullscreen(false)">
+      <svg
+        width="31"
+        height="31"
+        viewBox="0 0 31 31"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M4.24265 1.41422C3.4616 0.633168 2.19527 0.633168 1.41422 1.41422C0.633171 2.19527 0.633171 3.4616 1.41422 4.24264L12.7279 15.5564L1.41422 26.8701C0.633168 27.6511 0.633168 28.9174 1.41422 29.6985C2.19527 30.4795 3.4616 30.4795 4.24264 29.6985L15.5564 18.3848L26.8701 29.6985C27.6511 30.4795 28.9174 30.4795 29.6985 29.6985C30.4795 28.9174 30.4795 27.6511 29.6985 26.8701L18.3848 15.5564L29.6985 4.24265C30.4795 3.4616 30.4795 2.19527 29.6985 1.41422C28.9174 0.633169 27.6511 0.63317 26.8701 1.41422L15.5564 12.7279L4.24265 1.41422Z"
+          fill="white"
+        />
+      </svg>
+    </button>
     <div class="container">
-      <button class="close-fullscreen" @click="mainSliderStore.toggleFullscreen(false)">
-        <svg
-          width="31"
-          height="31"
-          viewBox="0 0 31 31"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M4.24265 1.41422C3.4616 0.633168 2.19527 0.633168 1.41422 1.41422C0.633171 2.19527 0.633171 3.4616 1.41422 4.24264L12.7279 15.5564L1.41422 26.8701C0.633168 27.6511 0.633168 28.9174 1.41422 29.6985C2.19527 30.4795 3.4616 30.4795 4.24264 29.6985L15.5564 18.3848L26.8701 29.6985C27.6511 30.4795 28.9174 30.4795 29.6985 29.6985C30.4795 28.9174 30.4795 27.6511 29.6985 26.8701L18.3848 15.5564L29.6985 4.24265C30.4795 3.4616 30.4795 2.19527 29.6985 1.41422C28.9174 0.633169 27.6511 0.63317 26.8701 1.41422L15.5564 12.7279L4.24265 1.41422Z"
-            fill="white"
-          />
-        </svg>
-      </button>
       <div class="fullscreen-slider__wrapper">
         <swiper-container
           ref="swiperContainer"
@@ -114,18 +114,30 @@ const mainSliderStore = useMainSliderStore()
 const swiperContainer = ref<SwiperContainer | null>(null)
 let swiperInstance: Swiper | undefined = undefined
 
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && mainSliderStore.fullscreenEnabled) {
+    mainSliderStore.toggleFullscreen(false)
+  }
+}
+
 onMounted(() => {
   swiperInstance = getSwiperInstance(swiperContainer.value)
   swiperInstance?.slideTo(mainSliderStore.activeSlide)
+  window.addEventListener('keydown', handleKeyDown)
 })
 onUnmounted(() => {
   swiperInstance = undefined
+  window.removeEventListener('keydown', handleKeyDown)
 })
 </script>
 
 <style scoped lang="scss">
 @use '@/assets/scss/vars';
 @use '@/assets/scss/mixins';
+
+.container {
+  width: 100%;
+}
 
 .fullscreen-slider {
   position: fixed;
@@ -137,6 +149,11 @@ onUnmounted(() => {
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  max-width: 100%;
+  overflow: hidden;
 
   &--active {
     z-index: 5;
@@ -144,9 +161,13 @@ onUnmounted(() => {
   }
 
   &__wrapper {
-    padding-top: 120px;
     width: 100%;
     position: relative;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: start;
   }
 
   &__navigation {
@@ -159,14 +180,20 @@ onUnmounted(() => {
 }
 
 .close-fullscreen {
-  position: absolute;
-  z-index: 6;
-  top: 25px;
-  right: 40px;
+  margin: 40px;
   border: 2px solid vars.$light;
   padding: 10px;
   background-color: #ec3a3a;
   transition: all 0.3s ease-in-out;
+
+  @media (max-width: 1200px) {
+    margin: 20px;
+  }
+
+  @media (max-width: 620px) {
+    width: 45px;
+    height: 45px;
+  }
 
   @include mixins.hover {
     opacity: 0.7;
