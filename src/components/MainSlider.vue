@@ -1,14 +1,19 @@
 <template>
+  <FullscreenSlider v-if="mainSliderStore.fullscreenEnabled === true" />
+
   <div class="main-slider">
     <div class="container">
       <TitleMulticolor :title="sliderTitle" :mainColor="'yellow'" :titleColor="'blue'" />
     </div>
 
-    <div class="slider" id="main-slider">
+    <div class="slider">
       <swiper-container
+        ref="swiperContainer"
         :slides-per-view="1.164"
+        :initial-slide="mainSliderStore.activeSlide"
         :navigation-next-el="'.slider-bottom__right'"
         :navigation-prev-el="'.slider-bottom__left'"
+        @swiperslidechange="getCurrentIndex"
         :breakpoints="{
           620: {
             slidesPerView: 1.164,
@@ -24,9 +29,6 @@
               src="@/assets/img/about-us/our-photos/1.jpg"
               srcset="@/assets/img/about-us/our-photos/1@2x.jpg 2x"
               alt="Img slide"
-              data-pswp-width="500"
-              data-pswp-height="500"
-              target="_blank"
             />
           </div>
         </swiper-slide>
@@ -36,9 +38,6 @@
               src="@/assets/img/about-us/our-photos/1.jpg"
               srcset="@/assets/img/about-us/our-photos/1@2x.jpg 2x"
               alt="Img slide"
-              data-pswp-width="500"
-              data-pswp-height="500"
-              target="_blank"
             />
           </div>
         </swiper-slide>
@@ -70,7 +69,7 @@
 
             back
           </button>
-          <button class="fullscreen-button">
+          <button class="fullscreen-button" @click="handleToggleFullscreen">
             <svg
               width="29"
               height="29"
@@ -136,16 +135,15 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
-
+import { ref, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
-import { register } from 'swiper/element'
+import { register, type SwiperContainer } from 'swiper/element'
 
-import PhotoSwipeLightbox from 'photoswipe/lightbox'
-import 'photoswipe/style.css'
-
+import { useMainSliderStore } from '@/stores/mainSlider'
 import TitleMulticolor from './TitleMulticolor.vue'
+import FullscreenSlider from './FullscreenSlider.vue'
 
 register()
 
@@ -155,21 +153,27 @@ defineProps<{
   sliderTitle: string
 }>()
 
-let lightbox: PhotoSwipeLightbox | null = null
+const swiperContainer = ref<SwiperContainer | null>(null)
+let swiperInstance: Swiper | null | undefined = null
+const mainSliderStore = useMainSliderStore()
 
-onMounted(() => {
-  lightbox = new PhotoSwipeLightbox({
-    gallery: '#main-slider',
-    children: '.slider-item img',
-    pswpModule: () => import('photoswipe'),
-  })
+const getCurrentIndex = (e: CustomEvent) => {
+  mainSliderStore.changeIndexSlide(e.detail[0].activeIndex)
+}
 
-  lightbox.init()
+const handleToggleFullscreen = (e: MouseEvent) => {
+  e.stopPropagation()
+  mainSliderStore.toggleFullscreen(true)
+}
+
+const { activeSlide, fullscreenEnabled } = storeToRefs(mainSliderStore)
+
+watch([activeSlide, fullscreenEnabled], () => {
+  swiperInstance?.slideTo(activeSlide.value)
 })
 
-onUnmounted(() => {
-  lightbox?.destroy()
-  lightbox = null
+onMounted(() => {
+  swiperInstance = swiperContainer.value?.swiper
 })
 </script>
 
@@ -316,6 +320,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 
   @media (max-width: 398px) {
     width: 40px;
