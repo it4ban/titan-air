@@ -103,16 +103,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useMainSliderStore } from '@/stores/mainSlider'
 import type { SwiperContainer } from 'swiper/element'
+import Swiper from 'swiper'
+import { getSwiperInstance } from '@/utils'
 
-const swiperContainer = ref<SwiperContainer | null>(null)
 const mainSliderStore = useMainSliderStore()
 
+const swiperContainer = ref<SwiperContainer | null>(null)
+let swiperInstance: Swiper | undefined = undefined
+
 onMounted(() => {
-  const swiperInstance = swiperContainer.value?.swiper
+  swiperInstance = getSwiperInstance(swiperContainer.value)
   swiperInstance?.slideTo(mainSliderStore.activeSlide)
+})
+onUnmounted(() => {
+  swiperInstance = undefined
 })
 </script>
 

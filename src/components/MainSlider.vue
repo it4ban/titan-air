@@ -135,12 +135,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 import { register, type SwiperContainer } from 'swiper/element'
 
+import { getSwiperInstance } from '@/utils'
 import { useMainSliderStore } from '@/stores/mainSlider'
 import TitleMulticolor from './TitleMulticolor.vue'
 import FullscreenSlider from './FullscreenSlider.vue'
@@ -153,27 +154,29 @@ defineProps<{
   sliderTitle: string
 }>()
 
-const swiperContainer = ref<SwiperContainer | null>(null)
-let swiperInstance: Swiper | null | undefined = null
 const mainSliderStore = useMainSliderStore()
+
+const swiperContainer = ref<SwiperContainer | null>(null)
+let mainSliderInstance: Swiper | undefined = undefined
 
 const getCurrentIndex = (e: CustomEvent) => {
   mainSliderStore.changeIndexSlide(e.detail[0].activeIndex)
 }
-
 const handleToggleFullscreen = (e: MouseEvent) => {
   e.stopPropagation()
   mainSliderStore.toggleFullscreen(true)
 }
 
-const { activeSlide, fullscreenEnabled } = storeToRefs(mainSliderStore)
-
-watch([activeSlide, fullscreenEnabled], () => {
-  swiperInstance?.slideTo(activeSlide.value)
+const { activeSlide } = storeToRefs(mainSliderStore)
+watch(activeSlide, () => {
+  mainSliderInstance?.slideTo(activeSlide.value)
 })
 
 onMounted(() => {
-  swiperInstance = swiperContainer.value?.swiper
+  mainSliderInstance = getSwiperInstance(swiperContainer.value)
+})
+onUnmounted(() => {
+  mainSliderInstance = undefined
 })
 </script>
 
