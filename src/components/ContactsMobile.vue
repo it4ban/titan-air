@@ -211,7 +211,7 @@ const toggleSidebarContacts = () => {
 
   &--open {
     opacity: 1;
-    z-index: 1;
+    z-index: 3;
     width: 500px;
     max-width: 100%;
 
