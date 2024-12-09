@@ -10,7 +10,6 @@
       <swiper-container
         ref="swiperContainer"
         :slides-per-view="1.164"
-        :loop="true"
         :initial-slide="mainSliderStore.activeSlide"
         :navigation-next-el="'.slider-bottom__right'"
         :navigation-prev-el="'.slider-bottom__left'"

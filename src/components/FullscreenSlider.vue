@@ -103,16 +103,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+
+import { storeToRefs } from 'pinia'
 import { useMainSliderStore } from '@/stores/mainSlider'
+
 import type { SwiperContainer } from 'swiper/element'
 import Swiper from 'swiper'
+
 import { getSwiperInstance } from '@/utils'
+let swiperInstance: Swiper | undefined = undefined
 
 const mainSliderStore = useMainSliderStore()
+const { activeSlide } = storeToRefs(mainSliderStore)
+
+watch(activeSlide, () => {
+  swiperInstance?.slideTo(mainSliderStore.activeSlide)
+})
 
 const swiperContainer = ref<SwiperContainer | null>(null)
-let swiperInstance: Swiper | undefined = undefined
 
 const handleKeyDown = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && mainSliderStore.fullscreenEnabled) {
@@ -122,7 +131,6 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 onMounted(() => {
   swiperInstance = getSwiperInstance(swiperContainer.value)
-  swiperInstance?.slideTo(mainSliderStore.activeSlide)
   window.addEventListener('keydown', handleKeyDown)
 })
 onUnmounted(() => {
