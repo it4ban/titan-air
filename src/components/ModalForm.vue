@@ -21,6 +21,7 @@ const dialogModal = ref<HTMLElement | null>(null)
 const handleCloseModal = () => {
   emit('close')
 }
+
 const handleKeydown = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && props.isOpen) {
     handleCloseModal()

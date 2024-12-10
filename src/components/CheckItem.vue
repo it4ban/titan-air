@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
 defineProps<{
   title: string
+  value: string
 }>()
 
 const checkButton = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-  checkButton.value?.addEventListener('click', () => {
-    const inputField = checkButton.value?.nextElementSibling as HTMLInputElement
+const toggleCheckbox = () => {
+  const inputField = checkButton.value?.nextElementSibling as HTMLInputElement
 
-    checkButton.value?.classList.toggle('check-item__icon--checked')
-    inputField.checked = !inputField.checked
-  })
+  checkButton.value?.classList.toggle('check-item__icon--checked')
+  inputField.checked = !inputField.checked
+}
+
+onMounted(() => {
+  checkButton.value?.addEventListener('click', toggleCheckbox)
+})
+onUnmounted(() => {
+  checkButton.value?.removeEventListener('click', toggleCheckbox)
 })
 </script>
 
@@ -33,7 +40,7 @@ onMounted(() => {
           />
         </svg>
       </div>
-      <input class="check-item__input" type="checkbox" />
+      <input class="check-item__input" type="checkbox" :value="value" />
     </div>
     <p class="check-item__title">{{ title }}</p>
   </li>

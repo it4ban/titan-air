@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ErrorMessage } from 'vee-validate'
 import FieldHeaderItem from './FieldHeaderItem.vue'
 
 defineProps<{
@@ -19,6 +20,8 @@ defineProps<{
         <ul class="check-list">
           <slot name="list-right"></slot>
         </ul>
+
+        <ErrorMessage name="сheckboxes" />
       </div>
     </div>
   </div>

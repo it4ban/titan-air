@@ -29,16 +29,16 @@ const modalStore = useModalStore()
     <template v-slot:main-content>
       <ModalChecks :title="'Services required:'">
         <template v-slot:list-left>
-          <CheckItem :title="'Landing & o/f permits'" />
-          <CheckItem :title="'Ground handling'" />
-          <CheckItem :title="'Catering'" />
-          <CheckItem :title="'Hotac'" />
+          <CheckItem :title="'Landing & o/f permits'" value="1" />
+          <CheckItem title="'Ground handling'" value="2" />
+          <CheckItem title="'Catering'" value="3" />
+          <CheckItem title="'Hotac'" value="4" />
         </template>
         <template v-slot:list-right>
-          <CheckItem :title="'Airport service'" />
-          <CheckItem :title="'VIP/Business lounge'" />
-          <CheckItem :title="'Fuel'" />
-          <CheckItem :title="'Other'" />
+          <CheckItem :title="'Airport service'" value="5" />
+          <CheckItem :title="'VIP/Business lounge'" value="6" />
+          <CheckItem :title="'Fuel'" value="7" />
+          <CheckItem :title="'Other'" value="8" />
         </template>
       </ModalChecks>
     </template>
