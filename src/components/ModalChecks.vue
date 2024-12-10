@@ -21,7 +21,7 @@ defineProps<{
           <slot name="list-right"></slot>
         </ul>
 
-        <ErrorMessage name="сheckboxes" />
+        <ErrorMessage name="checkboxes" />
       </div>
     </div>
   </div>

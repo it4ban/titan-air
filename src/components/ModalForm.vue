@@ -41,8 +41,7 @@ watch(
 )
 
 const onSubmitForm = (values: Record<string, string>) => {
-  console.log('Form submitted! ^^')
-  console.log('Form values:', values)
+  alert(JSON.stringify(values, null, 2))
   handleCloseModal()
 }
 

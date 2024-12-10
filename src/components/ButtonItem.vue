@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <button :class="['btn', `btn--${variant}`]" @click="onClick">
+  <button :class="['btn', `btn--${variant}`]" @click="onClick" type="submit">
     <slot />
   </button>
 </template>

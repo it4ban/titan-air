@@ -1,32 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { toRefs } from 'vue'
+import { useField } from 'vee-validate'
 
-defineProps<{
+const props = defineProps<{
   title: string
+  name: string
   value: string
 }>()
 
-const checkButton = ref<HTMLElement | null>(null)
+// const checkButton = ref<HTMLElement | null>(null)
+const { name } = toRefs(props)
 
-const toggleCheckbox = () => {
-  const inputField = checkButton.value?.nextElementSibling as HTMLInputElement
-
-  checkButton.value?.classList.toggle('check-item__icon--checked')
-  inputField.checked = !inputField.checked
-}
-
-onMounted(() => {
-  checkButton.value?.addEventListener('click', toggleCheckbox)
-})
-onUnmounted(() => {
-  checkButton.value?.removeEventListener('click', toggleCheckbox)
+const { checked, handleChange } = useField(name, undefined, {
+  type: 'checkbox',
+  checkedValue: props.value,
 })
 </script>
 
 <template>
-  <li class="check-item">
+  <button type="button" class="check-item" @click="handleChange(value)">
     <div class="check-item__checkbox">
-      <div ref="checkButton" class="check-item__icon">
+      <div :class="['check-item__icon', { 'check-item__icon--checked': checked }]">
         <svg
           width="10"
           height="8"
@@ -40,10 +34,9 @@ onUnmounted(() => {
           />
         </svg>
       </div>
-      <input class="check-item__input" type="checkbox" :value="value" />
     </div>
-    <p class="check-item__title">{{ title }}</p>
-  </li>
+    <p class="check-item__title">{{ title }} {{ checked ? value : '' }}</p>
+  </button>
 </template>
 
 <style lang="scss" scoped>

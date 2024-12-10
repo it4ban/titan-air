@@ -24,10 +24,10 @@ const modalStore = useModalStore()
 
       <ModalChecks :title="'Carriage type:'">
         <template v-slot:list-left>
-          <CheckItem :title="'Regular flight'" />
+          <CheckItem name="" title="'Regular flight'" value="1" />
         </template>
         <template v-slot:list-right>
-          <CheckItem :title="'Charter flight'" />
+          <CheckItem name="" title="'Charter flight'" value="1" />
         </template>
       </ModalChecks>
 
@@ -37,13 +37,13 @@ const modalStore = useModalStore()
     <template v-slot:main-content>
       <ModalChecks :title="'Passenger category:'">
         <template v-slot:list-left>
-          <CheckItem :title="'Business/VIP'" />
-          <CheckItem :title="'Tourism'" />
-          <CheckItem :title="'Other'" />
+          <CheckItem name="" title="'Business/VIP'" value="1" />
+          <CheckItem name="" title="'Tourism'" value="1" />
+          <CheckItem name="" title="'Other'" value="1" />
         </template>
         <template v-slot:list-right>
-          <CheckItem :title="'Marine travel'" />
-          <CheckItem :title="'Sport event'" />
+          <CheckItem name="" title="'Marine travel'" value="1" />
+          <CheckItem name="" title="'Sport event'" value="1" />
         </template>
       </ModalChecks>
     </template>
