@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { useTemplateRef, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import SocialIcon from './SocialIcon.vue'
@@ -15,7 +15,7 @@ const emit = defineEmits<{
   (event: 'update:isOpened', value: boolean): void
 }>()
 
-function closeMenu() {
+const closeMenu = () => {
   emit('update:isOpened', false)
 }
 
@@ -25,7 +25,11 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeyDown))
+const searchIcon = useTemplateRef('searchIcon')
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+})
 onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
 </script>
 
@@ -66,10 +70,14 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
             >
           </li>
           <li class="nav-mobile__item">
-            <a href="#" class="contrast-header nav-mobile__link">Travel agency</a>
+            <RouterLink to="/travels" class="contrast-header nav-mobile__link" @click="closeMenu"
+              >Travel agency</RouterLink
+            >
           </li>
           <li class="nav-mobile__item">
-            <a href="#" class="contrast-header nav-mobile__link">Charter flights</a>
+            <RouterLink to="/charters" class="contrast-header nav-mobile__link" @click="closeMenu"
+              >Charter flights</RouterLink
+            >
           </li>
           <li class="nav-mobile__item">
             <RouterLink to="/contacts" class="contrast-header nav-mobile__link" @click="closeMenu"
@@ -145,8 +153,8 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
           </SocialIcon>
         </div>
 
-        <div class="nav-mobile__bottom-icons">
-          <SearchIcon iconVariant="light" />
+        <div class="nav-mobile__bottom-icons" @change="closeMenu">
+          <SearchIcon ref="searchIcon" iconVariant="light" />
           <ContactsLinkIcon iconVariant="light" />
         </div>
       </div>

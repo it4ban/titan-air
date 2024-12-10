@@ -1,35 +1,37 @@
 <template>
-  <section class="banner" :style="bannerStyle">
+  <section
+    class="banner"
+    :style="{
+      backgroundImage: `url(${bannerImage})`,
+    }"
+  >
     <div class="container">
       <BreadCrumbsItem />
 
-      <div v-if="bannerImage" class="banner__img">
-        <img
-          :src="bannerImage"
-          :srcset="bannerImageX2 ? `${bannerImageX2} 2x` : ''"
-          loading="lazy"
-          alt="Plane"
-        />
+      <div v-if="img" class="banner__img">
+        <img :src="img" :srcset="imgX2 ? `${imgX2} 2x` : ''" loading="lazy" alt="Plane" />
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import type { StyleValue } from 'vue'
 import BreadCrumbsItem from './BreadCrumbsItem.vue'
 
 defineProps<{
+  img?: string
+  imgX2?: string
   bannerImage?: string
-  bannerImageX2?: string
-  bannerStyle: StyleValue
 }>()
 </script>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins';
+
 .banner {
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: top center;
   width: 100%;
   height: 400px;
   padding-top: 100px;

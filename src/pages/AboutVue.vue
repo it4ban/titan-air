@@ -1,11 +1,7 @@
 <template>
   <main class="about-us">
     <div class="about-us__wrapper">
-      <BannerItem
-        :bannerImage="aboutUsImg"
-        :bannerImageX2="aboutUsImgX2"
-        :bannerStyle="{ backgroundImage: `url(${aboutUsBanner})` }"
-      />
+      <BannerItem :img="aboutUsImg" :imgX2="aboutUsImgX2" :bannerImage="aboutUsBanner" />
 
       <div class="banner-description">
         <div class="container">
@@ -126,9 +122,10 @@
 <script setup lang="ts">
 import BannerItem from '@/components/BannerItem.vue'
 
-import aboutUsBanner from '@/assets/img/about-us/bg-top.jpg'
 import aboutUsImg from '@/assets/img/about-us/about-logo.png'
 import aboutUsImgX2 from '@/assets/img/about-us/about-logo@2x.png'
+import aboutUsBanner from '@/assets/img/about-us/bg-top.jpg'
+
 import TitleMulticolor from '@/components/TitleMulticolor.vue'
 import ButtonItem from '@/components/ButtonItem.vue'
 import SocialIcon from '@/components/SocialIcon.vue'

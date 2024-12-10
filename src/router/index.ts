@@ -2,14 +2,16 @@ import { createWebHashHistory, createRouter } from 'vue-router'
 
 import HomeVue from '@/pages/HomeVue.vue'
 import ServiceVue from '@/pages/ServiceVue.vue'
+import CharterVue from '@/pages/CharterVue.vue'
 import ContactsVue from '@/pages/ContactsVue.vue'
 import AboutVue from '@/pages/AboutVue.vue'
+import NewsVue from '@/pages/NewsVue.vue'
+import SearchVue from '@/pages/SearchVue.vue'
 
 import { RoutePathsEnum } from './router.types'
 import { AppLayoutsEnum } from '@/layouts/layouts.types'
 import { loadLayoutMiddleware } from './loadLayout.middleware'
-import NewsVue from '@/pages/NewsVue.vue'
-import SearchVue from '@/pages/SearchVue.vue'
+import TravelsVue from '@/pages/TravelsVue.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
@@ -26,6 +28,22 @@ const router = createRouter({
       path: `/service`,
       name: RoutePathsEnum.service,
       component: ServiceVue,
+      meta: {
+        layout: AppLayoutsEnum.default,
+      },
+    },
+    {
+      path: '/charters',
+      name: RoutePathsEnum.charters,
+      component: CharterVue,
+      meta: {
+        layout: AppLayoutsEnum.default,
+      },
+    },
+    {
+      path: '/travels',
+      name: RoutePathsEnum.travels,
+      component: TravelsVue,
       meta: {
         layout: AppLayoutsEnum.default,
       },

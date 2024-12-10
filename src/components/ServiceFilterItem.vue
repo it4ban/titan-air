@@ -4,8 +4,12 @@ import ButtonItem from './ButtonItem.vue'
 import GroundModalForm from './GroundModalForm.vue'
 import AirModalForm from './AirModalForm.vue'
 
-import { useModalStore } from '@/stores/modal'
+defineProps<{
+  items: string[]
+  activeItemIndex: number
+}>()
 
+import { useModalStore } from '@/stores/modal'
 const modalStore = useModalStore()
 
 const handleOpenModal = (formName: 'groundModal' | 'airModal') => {
@@ -21,10 +25,10 @@ const handleOpenModal = (formName: 'groundModal' | 'airModal') => {
     <p class="services__header">choose service:</p>
 
     <div class="services__wrapper">
-      <LeftAsideItem />
+      <LeftAsideItem :items="items" :currentItemIndex="activeItemIndex" />
 
       <div class="content">
-        <h6 class="small-header content__header">O/F & land permits</h6>
+        <h6 class="small-header content__header">{{ items[activeItemIndex] }}</h6>
 
         <div class="content__text-wrapper">
           <p class="content__text">

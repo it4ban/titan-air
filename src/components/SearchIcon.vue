@@ -226,9 +226,9 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
     border: 2px solid vars.$light;
     padding: 0 25px;
     height: 60px;
-    color: vars.$light;
+    color: vars.$blue;
     font-size: 18px;
-    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.7);
     transition: all vars.$transition;
 
     &:active,

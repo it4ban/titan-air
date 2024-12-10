@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import '@/assets/scss/service.scss'
 
-import { flightData } from '@/data'
+import { travelData } from '@/data'
 
 import ServiceFilterItem from '@/components/ServiceFilterItem.vue'
 import BannerItem from '@/components/BannerItem.vue'
@@ -11,23 +11,19 @@ import TitleMulticolor from '@/components/TitleMulticolor.vue'
 <template>
   <main class="all">
     <div class="all__wrapper">
-      <BannerItem
-        :img="flightData.img"
-        :imgX2="flightData.imgX2"
-        :bannerImage="flightData.bannerImg"
-      />
+      <BannerItem :bannerImage="travelData.bannerImg" />
 
       <section class="page">
         <div class="container">
           <div class="page-description">
             <TitleMulticolor
-              :title="flightData.pageTitle"
+              :title="travelData.pageTitle"
               :mainColor="'blue'"
               :titleColor="'yellow'"
             />
 
             <p class="page-description__text">
-              {{ flightData.pageDescription }}
+              {{ travelData.pageDescription }}
             </p>
 
             <div class="underline"></div>
@@ -35,8 +31,8 @@ import TitleMulticolor from '@/components/TitleMulticolor.vue'
 
           <div class="page-content">
             <ServiceFilterItem
-              :items="flightData.servicesItems"
-              :activeItemIndex="flightData.serviceActiveIndex"
+              :items="travelData.servicesItems"
+              :activeItemIndex="travelData.serviceActiveIndex"
             />
           </div>
         </div>

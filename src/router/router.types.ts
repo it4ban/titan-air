@@ -11,6 +11,8 @@ declare module 'vue-router' {
 export enum RoutePathsEnum {
   home = 'home',
   service = 'service',
+  charters = 'charters',
+  travels = 'travels',
   contacts = 'contacts',
   aboutUs = 'aboutUs',
   news = 'news',
