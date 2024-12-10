@@ -19,15 +19,15 @@ const modalStore = useModalStore()
     title="Air carriage request form"
   >
     <template v-slot:top-content>
-      <ModalFieldItem :header="'Company name:'" :validationName="'companyName'" />
-      <ModalFieldItem :header="'E-mail:'" :validationName="'email'" />
+      <ModalFieldItem header="Company name:" :validationName="'companyName'" />
+      <ModalFieldItem header="E-mail:" :validationName="'email'" />
 
-      <ModalChecks :title="'Carriage type:'">
+      <ModalChecks title="Carriage type:">
         <template v-slot:list-left>
-          <CheckItem name="" title="'Regular flight'" value="1" />
+          <CheckItem name="" title="Regular flight" value="1" />
         </template>
         <template v-slot:list-right>
-          <CheckItem name="" title="'Charter flight'" value="1" />
+          <CheckItem name="" title="Charter flight" value="1" />
         </template>
       </ModalChecks>
 
@@ -41,13 +41,13 @@ const modalStore = useModalStore()
     <template v-slot:main-content>
       <ModalChecks :title="'Passenger category:'">
         <template v-slot:list-left>
-          <CheckItem name="" title="'Business/VIP'" value="1" />
-          <CheckItem name="" title="'Tourism'" value="1" />
-          <CheckItem name="" title="'Other'" value="1" />
+          <CheckItem name="" title="Business/VIP" value="1" />
+          <CheckItem name="" title="Tourism" value="1" />
+          <CheckItem name="" title="Other" value="1" />
         </template>
         <template v-slot:list-right>
-          <CheckItem name="" title="'Marine travel'" value="1" />
-          <CheckItem name="" title="'Sport event'" value="1" />
+          <CheckItem name="" title="Marine travel" value="1" />
+          <CheckItem name="" title="Sport event" value="1" />
         </template>
       </ModalChecks>
     </template>
