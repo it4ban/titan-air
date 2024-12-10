@@ -31,7 +31,11 @@ const modalStore = useModalStore()
         </template>
       </ModalChecks>
 
-      <ModalAreaItem :header="'Route and preferable schedule:'" :input-style="{ height: '90px' }" />
+      <ModalAreaItem
+        :validationName="'sad'"
+        :header="'Route and preferable schedule:'"
+        :input-style="{ height: '90px' }"
+      />
       <ModalFieldItem :header="'Passenger number:'" :validationName="'passengerNumber'" />
     </template>
     <template v-slot:main-content>

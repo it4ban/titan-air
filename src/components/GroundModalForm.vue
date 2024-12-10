@@ -24,7 +24,11 @@ const modalStore = useModalStore()
       <ModalFieldItem :header="'Aircraft type:'" :validationName="'aircraftType'" />
       <ModalFieldItem :header="'Aircraft reg:'" :validationName="'aircraftReg'" />
       <ModalFieldItem :header="'Purpose of flight:'" :validationName="'purpose'" />
-      <ModalAreaItem :header="'Locations and schedule:'" :input-style="{ height: '90px' }" />
+      <ModalAreaItem
+        :header="'Locations and schedule:'"
+        :input-style="{ height: '90px' }"
+        :validationName="'location'"
+      />
     </template>
     <template v-slot:main-content>
       <ModalChecks :title="'Services required:'">

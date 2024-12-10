@@ -7,6 +7,8 @@ export const groundValidationSchema = yup.object({
   aircraftReg: yup.string().required('is required field'),
   purpose: yup.string().required('is required field'),
   checkboxes: yup.array().min(1).of(yup.string().required()).required(),
+  location: yup.string(),
+  remarks: yup.string(),
 })
 
 export const airValidationSchema = yup.object({

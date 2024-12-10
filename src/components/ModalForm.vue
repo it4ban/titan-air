@@ -87,7 +87,11 @@ onUnmounted(() => {
         <div class="modal-form__content">
           <slot name="main-content"></slot>
 
-          <ModalAreaItem :header="'Remarks:'" :input-style="{ height: '135px' }" />
+          <ModalAreaItem
+            :validationName="'remarks'"
+            :header="'Remarks:'"
+            :input-style="{ height: '135px' }"
+          />
 
           <div class="modal-form__bottom">
             <AddFile />

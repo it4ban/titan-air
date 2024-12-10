@@ -35,7 +35,7 @@ const { checked, handleChange } = useField(name, undefined, {
         </svg>
       </div>
     </div>
-    <p class="check-item__title">{{ title }} {{ checked ? value : '' }}</p>
+    <p class="check-item__title">{{ title }}</p>
   </button>
 </template>
 
