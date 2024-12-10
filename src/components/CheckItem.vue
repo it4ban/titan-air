@@ -8,7 +8,6 @@ const props = defineProps<{
   value: string
 }>()
 
-// const checkButton = ref<HTMLElement | null>(null)
 const { name } = toRefs(props)
 
 const { checked, handleChange } = useField(name, undefined, {
