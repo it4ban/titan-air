@@ -42,7 +42,7 @@
         }"
       >
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 1 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -52,10 +52,10 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 2 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -65,10 +65,10 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 3 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -78,10 +78,10 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 4 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -91,10 +91,10 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 5 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -104,10 +104,10 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
         <swiper-slide>
-          <div class="slider-item">
+          <a href="#" class="slider-item">
             <div class="slider-item__wrapper">
               <span class="slider-item__header">Headline 6 Lorem ipsum dolor sit amet ...</span>
               <span class="slider-item__date">11.03.2020</span>
@@ -117,7 +117,7 @@
                 exercitation ullamco laboris nisi ut aliquip ex ea ...
               </p>
             </div>
-          </div>
+          </a>
         </swiper-slide>
       </swiper-container>
 
@@ -278,6 +278,7 @@ defineProps<{
   max-width: 100%;
   height: 550px;
   position: relative;
+  display: block;
 
   &::before {
     content: '';
