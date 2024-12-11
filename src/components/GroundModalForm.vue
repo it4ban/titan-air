@@ -31,18 +31,18 @@ const modalStore = useModalStore()
       />
     </template>
     <template v-slot:main-content>
-      <ModalChecks :title="'Services required:'">
+      <ModalChecks errorName="checkboxes" :title="'Services required:'">
         <template v-slot:list-left>
-          <CheckItem name="checkboxes" title="Landing & o/f permits" value="1" />
-          <CheckItem name="checkboxes" title="Ground handling" value="2" />
-          <CheckItem name="checkboxes" title="Catering" value="3" />
-          <CheckItem name="checkboxes" title="Hotac" value="4" />
+          <CheckItem name="checkboxes" title="Landing & o/f permits" value="landing&permits" />
+          <CheckItem name="checkboxes" title="Ground handling" value="groundHandling" />
+          <CheckItem name="checkboxes" title="Catering" value="catering" />
+          <CheckItem name="checkboxes" title="Hotac" value="hotac" />
         </template>
         <template v-slot:list-right>
-          <CheckItem name="checkboxes" title="Airport service" value="5" />
-          <CheckItem name="checkboxes" title="VIP/Business lounge" value="6" />
-          <CheckItem name="checkboxes" title="Fuel" value="7" />
-          <CheckItem name="checkboxes" title="Other" value="8" />
+          <CheckItem name="checkboxes" title="Airport service" value="airService" />
+          <CheckItem name="checkboxes" title="VIP/Business lounge" value="vipLounge" />
+          <CheckItem name="checkboxes" title="Fuel" value="fuel" />
+          <CheckItem name="checkboxes" title="Other" value="other" />
         </template>
       </ModalChecks>
     </template>

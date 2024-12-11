@@ -149,7 +149,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
   }
 
   &__icon {
-    z-index: 2;
+    z-index: 1;
 
     &--active {
       svg path {

@@ -22,32 +22,32 @@ const modalStore = useModalStore()
       <ModalFieldItem header="Company name:" :validationName="'companyName'" />
       <ModalFieldItem header="E-mail:" :validationName="'email'" />
 
-      <ModalChecks title="Carriage type:">
+      <ModalChecks errorName="carriageType" title="Carriage type:">
         <template v-slot:list-left>
-          <CheckItem name="" title="Regular flight" value="1" />
+          <CheckItem type="single" name="carriageType" title="Regular flight" value="regular" />
         </template>
         <template v-slot:list-right>
-          <CheckItem name="" title="Charter flight" value="1" />
+          <CheckItem type="single" name="carriageType" title="Charter flight" value="charter" />
         </template>
       </ModalChecks>
 
       <ModalAreaItem
-        :validationName="'sad'"
+        :validationName="'route'"
         :header="'Route and preferable schedule:'"
         :input-style="{ height: '90px' }"
       />
       <ModalFieldItem :header="'Passenger number:'" :validationName="'passengerNumber'" />
     </template>
     <template v-slot:main-content>
-      <ModalChecks :title="'Passenger category:'">
+      <ModalChecks errorName="checkboxes" :title="'Passenger category:'">
         <template v-slot:list-left>
-          <CheckItem name="" title="Business/VIP" value="1" />
-          <CheckItem name="" title="Tourism" value="1" />
-          <CheckItem name="" title="Other" value="1" />
+          <CheckItem name="checkboxes" title="Business/VIP" value="businessVip" />
+          <CheckItem name="checkboxes" title="Tourism" value="tourism" />
+          <CheckItem name="checkboxes" title="Other" value="other" />
         </template>
         <template v-slot:list-right>
-          <CheckItem name="" title="Marine travel" value="1" />
-          <CheckItem name="" title="Sport event" value="1" />
+          <CheckItem name="checkboxes" title="Marine travel" value="marineTravel" />
+          <CheckItem name="checkboxes" title="Sport event" value="sportEvent" />
         </template>
       </ModalChecks>
     </template>

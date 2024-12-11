@@ -6,13 +6,15 @@ const props = defineProps<{
   title: string
   name: string
   value: string
+  type?: 'single' | 'multiply'
 }>()
 
 const { name } = toRefs(props)
 
 const { checked, handleChange } = useField(name, undefined, {
-  type: 'checkbox',
+  type: props.type === 'single' ? 'radio' : 'checkbox',
   checkedValue: props.value,
+  controlled: true,
 })
 </script>
 
@@ -77,6 +79,7 @@ const { checked, handleChange } = useField(name, undefined, {
   &__title {
     font-weight: 400;
     color: vars.$blue;
+    text-align: left;
 
     @media (max-width: 398px) {
       font-size: 14px;
