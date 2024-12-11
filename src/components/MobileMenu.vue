@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef, onMounted, onUnmounted } from 'vue'
+import { useTemplateRef, ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import SocialIcon from './SocialIcon.vue'
@@ -25,16 +25,27 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 }
 
+const handleOutsideClick = (e: MouseEvent) => {
+  if (!mobileMenu.value!.contains(e.target as Node) && props.isOpened) {
+    closeMenu()
+  }
+}
+
 const searchIcon = useTemplateRef('searchIcon')
+const mobileMenu = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)
+  document.addEventListener('click', handleOutsideClick)
 })
-onUnmounted(() => window.removeEventListener('keydown', handleKeyDown))
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+  document.removeEventListener('click', handleOutsideClick)
+})
 </script>
 
 <template>
-  <div :class="['mobile-menu', { 'mobile-menu--open': props.isOpened }]">
+  <div ref="mobileMenu" :class="['mobile-menu', { 'mobile-menu--open': props.isOpened }]">
     <div class="mobile-menu__wrapper">
       <div
         :class="['mobile-menu__left-side', { 'mobile-menu__left-side--center': centeredCloseIcon }]"

@@ -14,7 +14,8 @@ defineProps<{
   headerToggled?: boolean
 }>()
 
-const toggleMenu = () => {
+const toggleMenu = (e: MouseEvent) => {
+  e.stopPropagation()
   isOpened.value = !isOpened.value
 }
 
